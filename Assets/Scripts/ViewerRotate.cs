@@ -1,0 +1,25 @@
+﻿/*
+    File name: ViewerRotate.cs
+    Author:    Luke Lazzaro
+    Summary: Allows rotation of the artifact viewer with the mouse
+    Creation Date: 22/07/2020
+    Last Modified: 22/07/2020
+*/
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ViewerRotate : MonoBehaviour
+{
+    [SerializeField] private float mouseSensitivity = 50;
+
+    void Update()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            Vector3 rotVector = new Vector3(Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime, Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime, 0);
+            transform.Rotate(rotVector, Space.World);
+        }
+    }
+}
