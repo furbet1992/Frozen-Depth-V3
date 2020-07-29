@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Meltable_wall
   - Ice_wall
+  - Ice
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - 
   - 
   - Ground
-  - 
+  - Interactable
   - 
   - 
   - 
