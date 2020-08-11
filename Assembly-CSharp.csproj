@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\FlowerPower\Scripts\Grenade.cs" />
+    <Compile Include="Assets\Scripts\FadeToBlack.cs" />
     <Compile Include="Assets\Scripts\Fire.cs" />
     <Compile Include="Assets\Scripts\FireRay.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
@@ -83,6 +84,9 @@
     <Compile Include="Assets\Scripts\Programmers_Folder\TerrainMan.cs" />
     <Compile Include="Assets\Scripts\RockFallTrigger.cs" />
     <Compile Include="Assets\Scripts\TriggleToggle.cs" />
+    <Compile Include="Assets\Scripts\WindGenerator.cs" />
+    <Compile Include="Assets\Scripts\WindObject.cs" />
+    <Compile Include="Assets\Scripts\WindToggle.cs" />
     <None Include="Assets\Shaders\NewSurfaceShader.shader" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/project $$/school/Projects/Frozen Depth/Frozen-Depth-V3/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
