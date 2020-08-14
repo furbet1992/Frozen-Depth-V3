@@ -23,7 +23,22 @@ public class EditableTerrain : MonoBehaviour
     int width = 5;
     int depth = 5;
 
-    public float[,,] terrainMap;
+    public class floatMyGuy
+    {
+        public floatMyGuy(float val)
+        {
+            value = val;
+        }
+        
+        public bool Equals(float val)
+        {
+            return (val == value);
+        }
+
+        public float value;
+    }
+
+    public floatMyGuy[,,] terrainMap;
 
     private void Awake()
     {
@@ -40,7 +55,7 @@ public class EditableTerrain : MonoBehaviour
         SetHeight(meshSize.y);
         SetDepth(meshSize.z);
 
-        terrainMap = new float[width + 1, height + 1, depth + 1];
+        terrainMap = new floatMyGuy[width + 1, height + 1, depth + 1];
 
         PopulateTerrainMap();
         CreateMeshData();
@@ -48,13 +63,21 @@ public class EditableTerrain : MonoBehaviour
 
     void PopulateTerrainMap()
     {
+        float noiseZoom = 4.5f;
+
         for (int x = 0; x < width + 1; x++)
         {
             for (int y = 0; y < height + 1; y++)
             {
                 for (int z = 0; z < depth + 1; z++)
                 {
-                    terrainMap[x, y, z] = (float)y;
+                    terrainMap[x, y, z] = new floatMyGuy(y);
+
+                    float thisHeight = (Mathf.PerlinNoise(((float)x + (managerIndex.x * width)) / noiseZoom, (float)z + (managerIndex.y * depth)) / noiseZoom);
+                    thisHeight *= (float)height / 4;
+
+                    terrainMap[x, y, z].value = (float)y - thisHeight;
+
                 }
             }
         }
@@ -90,11 +113,40 @@ public class EditableTerrain : MonoBehaviour
         Vector3Int v3Int = new Vector3Int(Mathf.CeilToInt(pos.x), Mathf.CeilToInt(pos.y), Mathf.CeilToInt(pos.z));
         v3Int -= Vector3Int.RoundToInt(transform.position);
        
-        if (terrainMap[v3Int.x, v3Int.y, v3Int.z] == 0.0f)
+        if (terrainMap[v3Int.x, v3Int.y, v3Int.z].Equals(0.0f))
             return false;
 
-        terrainMap[v3Int.x, v3Int.y, v3Int.z] = 0.0f;
-        manager.UpdateMesh(managerIndex);
+        terrainMap[v3Int.x, v3Int.y, v3Int.z].value = 0.0f;
+
+        CreateMeshData();
+
+        if (v3Int.x == 0)
+        {
+            manager.UpdateChunk(managerIndex + new Vector2Int(-1, 0));
+            if (v3Int.z == 0)
+                manager.UpdateChunk(managerIndex + new Vector2Int(-1, -1));
+            if (v3Int.z >= depth - 1)
+                manager.UpdateChunk(managerIndex + new Vector2Int(-1, 1));
+
+        }
+        if (v3Int.x >= width - 1)
+        {
+            manager.UpdateChunk(managerIndex + new Vector2Int(1, 0));
+            if (v3Int.z == 0)
+                manager.UpdateChunk(managerIndex + new Vector2Int(1, -1));
+            if (v3Int.z >= depth - 1)
+                manager.UpdateChunk(managerIndex + new Vector2Int(1, 1));
+        }
+
+        if (v3Int.z == 0)
+        {
+            manager.UpdateChunk(managerIndex + new Vector2Int(0, -1));
+        }
+        if (v3Int.z >= depth - 1)
+        {
+            manager.UpdateChunk(managerIndex + new Vector2Int(0, 1));
+        }
+
         return true;
     }
 
@@ -102,13 +154,41 @@ public class EditableTerrain : MonoBehaviour
     {
         Vector3Int v3Int = new Vector3Int(Mathf.FloorToInt(pos.x), Mathf.FloorToInt(pos.y), Mathf.FloorToInt(pos.z));
         v3Int -= Vector3Int.RoundToInt(transform.position);
-        
-        if (terrainMap[v3Int.x, v3Int.y, v3Int.z] == 1.0f)
+
+        if (terrainMap[v3Int.x, v3Int.y, v3Int.z].Equals(1.0f))
             return false;
 
-        terrainMap[v3Int.x, v3Int.y, v3Int.z] = 1.0f;
+        terrainMap[v3Int.x, v3Int.y, v3Int.z].value = 1.0f;
+        CreateMeshData();
 
-        manager.UpdateMesh(managerIndex);
+
+        if (v3Int.x == 0)
+        {
+            manager.UpdateChunk(managerIndex + new Vector2Int(-1, 0));
+            if (v3Int.z == 0)
+                manager.UpdateChunk(managerIndex + new Vector2Int(-1, -1));
+            if (v3Int.z >= depth - 1)
+                manager.UpdateChunk(managerIndex + new Vector2Int(-1, 1));
+
+        }
+        if (v3Int.x >= width - 1)
+        {
+            manager.UpdateChunk(managerIndex + new Vector2Int(1, 0));
+            if (v3Int.z == 0)
+                manager.UpdateChunk(managerIndex + new Vector2Int(1, -1));
+            if (v3Int.z >= depth - 1)
+                manager.UpdateChunk(managerIndex + new Vector2Int(1, 1));
+        }
+
+        if (v3Int.z == 0)
+        {
+            manager.UpdateChunk(managerIndex + new Vector2Int(0, -1));
+        }
+        if (v3Int.z >= depth - 1)
+        {
+            manager.UpdateChunk(managerIndex + new Vector2Int(0, 1));
+        }
+
         return true;
     }
 
@@ -206,7 +286,7 @@ public class EditableTerrain : MonoBehaviour
 
     float SampleTerrain(Vector3Int point)
     {
-        return terrainMap[point.x, point.y, point.z];
+        return terrainMap[point.x, point.y, point.z].value;
     }
 
     public void BuildMesh()

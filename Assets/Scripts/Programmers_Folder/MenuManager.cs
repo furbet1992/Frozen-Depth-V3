@@ -12,6 +12,8 @@ public class MenuManager : MonoBehaviour
     public GameObject inGameUI;
     public GameObject settingsUI;
 
+    public GameObject player;
+
     [HideInInspector]
     public GameObject currentUI;
     [HideInInspector]
@@ -99,9 +101,9 @@ public class MenuManager : MonoBehaviour
         SwapCamera();
     }
 
-    public void Reset()
+    public void BackToCheckpoint()
     {
-
+        SaveManager.LoadGame(player);
     }
 
     public void BackFromSettings()

@@ -79,6 +79,11 @@
     <Compile Include="Assets\Scripts\Programmers_Folder\Michael\BlueIce.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\Michael\FuelBar.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\Michael\Tool.cs" />
+    <Compile Include="Assets\Scripts\Programmers_Folder\Save Scripts\Checkpoint.cs" />
+    <Compile Include="Assets\Scripts\Programmers_Folder\Save Scripts\CheckpointManager.cs" />
+    <Compile Include="Assets\Scripts\Programmers_Folder\Save Scripts\SaveData.cs" />
+    <Compile Include="Assets\Scripts\Programmers_Folder\Save Scripts\SaveGameTest.cs" />
+    <Compile Include="Assets\Scripts\Programmers_Folder\Save Scripts\SaveManager.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\Subtitles.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\SubtitleTrigger.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\TerrainMan.cs" />
