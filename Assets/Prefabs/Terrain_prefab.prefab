@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8096013442753439175}
   - component: {fileID: 1014191282026007267}
   - component: {fileID: 6702469674661566418}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Terrain_prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
