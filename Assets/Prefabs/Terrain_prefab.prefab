@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da5cdf35ef32e1498efefce4967d5a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothTerrain: 0
+  smoothTerrain: 1
   flatShaded: 1
   vertices: []
   triangles: 
@@ -76,7 +76,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e180dc5ee5a4c6548bf5df747641e261, type: 2}
+  - {fileID: 2100000, guid: 5ffeb9a16d9b7e94c8117f36f86458c3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
