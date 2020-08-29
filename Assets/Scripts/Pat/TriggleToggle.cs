@@ -7,16 +7,6 @@ public class TriggleToggle : MonoBehaviour
     //Drop any Gameobject in here
     public GameObject toggleObject; 
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter(Collider other)
     {

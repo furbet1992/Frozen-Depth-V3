@@ -63,12 +63,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\FlowerPower\Scripts\Grenade.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Pat\doorTrigger.cs" />
+    <Compile Include="Assets\Scripts\Pat\EnergySource.cs" />
     <Compile Include="Assets\Scripts\Pat\FallingStalactites.cs" />
     <Compile Include="Assets\Scripts\Pat\Fire.cs" />
     <Compile Include="Assets\Scripts\Pat\FireRay.cs" />
+    <Compile Include="Assets\Scripts\Pat\FlowerPower\Scripts\Grenade.cs" />
     <Compile Include="Assets\Scripts\Pat\IceToolTrigger.cs" />
+    <Compile Include="Assets\Scripts\Pat\key.cs" />
     <Compile Include="Assets\Scripts\Pat\QuickScript\QS_MoverNode.cs" />
     <Compile Include="Assets\Scripts\Pat\QuickScript\QuickGizmo.cs" />
     <Compile Include="Assets\Scripts\Pat\QuickScript\QuickMover.cs" />
@@ -99,6 +102,7 @@
     <Compile Include="Assets\Scripts\Programmers_Folder\WindToggle.cs" />
     <None Include="Assets\Materials\Triplanar.shader" />
     <None Include="Assets\Shaders\NewSurfaceShader.shader" />
+    <None Include="Assets\Materials\IceSHader (2).shader" />
     <None Include="Assets\Prefabs\IceSHader (1).shader" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/project $$/school/Projects/Frozen Depth/Frozen-Depth-V3/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
