@@ -12,7 +12,7 @@ public class FireRay : MonoBehaviour
     public AudioSource smallrockSlide;
     public AudioSource largeRockSlide;
     public AudioSource gateOpening;
-    public AudioSource hydraulicSound; 
+    public AudioSource hydraulicSound;
 
     public GameObject fallingStones;
     public GameObject fallingStones2;
@@ -24,7 +24,8 @@ public class FireRay : MonoBehaviour
     private LayerMask interactableAction;
     public GameObject gate;
     //public Animator gate; 
-    public AudioSource button; 
+    public AudioSource button;
+
 
 
 
@@ -32,14 +33,14 @@ public class FireRay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward,out rayhit, distanceRay))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out rayhit, distanceRay))
         {
             if (Input.GetMouseButtonDown(0))
             {
-                if(rayhit.collider.gameObject.tag == "Switch")
+                if (rayhit.collider.gameObject.tag == "Switch")
                 {
-                    Debug.Log("pressed"); 
-                    button.Play(); 
+                    Debug.Log("pressed");
+                    button.Play();
                     StartCoroutine(nextSound());
                 }
                 //button sound
@@ -66,26 +67,27 @@ public class FireRay : MonoBehaviour
                 //    StartCoroutine(nextSound());
                 //floor need to open and player falls
             }
-        }
+
         }
 
         IEnumerator nextSound()
         {
             yield return new WaitForSeconds(2);
-        //largeRockSlide.Play(); 
-        //fallingStones2.SetActive(true);
-        ////the floor gates to open
-        //gateOpening.Play();
-        //hydraulicSound.Play();
-        //activation_doorA.SetBool("Activate_Door", true);
-        //activation_doorB.SetBool("Activation_Door2", true);
+            //largeRockSlide.Play(); 
+            //fallingStones2.SetActive(true);
+            ////the floor gates to open
+            //gateOpening.Play();
+            //hydraulicSound.Play();
+            //activation_doorA.SetBool("Activate_Door", true);
+            //activation_doorB.SetBool("Activation_Door2", true);
 
-        //level scene
-        gate.transform.position += new Vector3(0f, 2.5f, 0f); 
+            //level scene
+            gate.transform.position += new Vector3(0f, 2.5f, 0f);
 
         }
 
-       // Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * distanceRay); 
+        // Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * distanceRay); 
 
     }
+}
 
