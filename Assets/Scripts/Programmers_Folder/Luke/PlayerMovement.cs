@@ -3,7 +3,7 @@
     Author:    Luke Lazzaro
     Summary: Adds first person movement to the player
     Creation Date: 20/07/2020
-    Last Modified: 25/08/2020
+    Last Modified: 31/08/2020
 */
 
 using System;
@@ -31,22 +31,33 @@ public class PlayerMovement : MonoBehaviour
     [Header("Char. Controller")]
     [SerializeField] private float ccHeight = 3;
     [SerializeField] private float ccCrouchHeight = 2;
+    [SerializeField] private float deathVelocity = -20;
 
     private CharacterController controller;
     private float groundDistance = 0.4f;
     private Vector3 velocity;
     private bool isGrounded;
     private bool isCrouching = true;
+    private Vector3 originalPos;
+    private bool willDie = false;
 
     private void Start()
     {
+        originalPos = transform.position;
         controller = GetComponent<CharacterController>();
         Crouch();
     }
 
     private void Update()
     {
+        Debug.Log(velocity.y); 
+
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+        if (isGrounded && velocity.y < deathVelocity)
+        {
+            willDie = true;
+        }
 
         if (isGrounded && velocity.y < 0)
         {
@@ -78,7 +89,16 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
     }
 
-    void Crouch()
+    private void LateUpdate()
+    {
+        if (willDie)
+        {
+            GoToLastCheckpoint();
+            willDie = false;
+        }
+    }
+
+    private void Crouch()
     {
         isCrouching = !isCrouching;
 
@@ -109,5 +129,18 @@ public class PlayerMovement : MonoBehaviour
         float gcZ = groundCheck.localPosition.z;
         Vector3 newPos = new Vector3(gcX, controller.center.y - controller.height * 0.5f, gcZ);
         groundCheck.localPosition = newPos;
+    }
+
+    // Call this in LateUpdate, otherwise the position will be overwritten by player movement.
+    private void GoToLastCheckpoint()
+    {
+        if (CheckpointManager.currentCheckpoint != null)
+        {
+            transform.position = CheckpointManager.currentCheckpoint.transform.position;
+        }
+        else
+        {
+            transform.position = originalPos;
+        }
     }
 }

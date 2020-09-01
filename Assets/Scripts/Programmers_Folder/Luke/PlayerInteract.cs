@@ -20,6 +20,7 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private MeshFilter artifactViewer;
     [SerializeField] private Text viewerDescription;
 
+    // Used for enabling and disabling player movement
     private PlayerMovement pmScript;
     private MouseLook mlScript;
 
@@ -31,6 +32,7 @@ public class PlayerInteract : MonoBehaviour
 
     private void Update()
     {
+        // Pressing E while standing in front of an interactable enables the artifact viewer for that object
         if (Input.GetKeyDown(KeyCode.E))
         {
             Vector3 camPos = playerCamera.position;
@@ -38,7 +40,22 @@ public class PlayerInteract : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(camPos, playerCamera.TransformDirection(Vector3.forward), out hit, interactReach, interactableMask))
             {
-                EnableArtifactViewer(hit.collider.gameObject);
+                Interactable interactable = hit.collider.GetComponent<Interactable>();
+                Key key = hit.collider.GetComponent<Key>();
+                Keyhole keyhole = hit.collider.GetComponent<Keyhole>();
+
+                if (interactable != null)
+                {
+                    EnableArtifactViewer(hit.collider.gameObject);
+                }
+                else if (key != null)
+                {
+                    key.Collect();
+                }
+                else if (keyhole != null)
+                {
+                    keyhole.Open();
+                }
             }
         }
 
