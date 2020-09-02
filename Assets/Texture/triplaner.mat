@@ -28,7 +28,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FrontMetSmoAlp:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 3f04609605693a049af8909cf7b0bd79, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FrontNormal:
@@ -44,7 +44,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RightMetSmoAlp:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 3f04609605693a049af8909cf7b0bd79, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RightNormal:
@@ -60,7 +60,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TopMetSmoAlp:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 3f04609605693a049af8909cf7b0bd79, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TopNormal:
