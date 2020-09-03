@@ -45,11 +45,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   terrainPrefab: {fileID: 5617590451199118027, guid: 1adf21344decb2241a71edc9c251a8c3,
     type: 3}
+  player: {fileID: 0}
+  maxDistanceFromMesh: 100
   terrainTotalX: 30
+  terrainTotalY: 10
   terrainTotalZ: 30
   terrainWidth: 5
   terrainHeight: 20
   terrainDepth: 5
-  verticeDistance: 1
   smoothTerrain: 1
   flatShaded: 1
+  chunkPrefab: 8

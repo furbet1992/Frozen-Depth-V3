@@ -6,21 +6,21 @@ using UnityEditor;
 using System;
 using System.Security.AccessControl;
 
-//[CustomEditor(typeof(TerrainMan))]
-//public class ObjectBuilderEditor : Editor
-//{
-//    public override void OnInspectorGUI()
-//    {
-//        DrawDefaultInspector();
-//
-//        TerrainMan myScript = (TerrainMan)target;
-//
-//        if (GUILayout.Button("Save Manager Mesh"))
-//        {
-//            myScript.SaveMesh();
-//        }
-//    }
-//}
+[CustomEditor(typeof(TerrainMan))]
+public class ObjectBuilderEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        DrawDefaultInspector();
+
+        TerrainMan myScript = (TerrainMan)target;
+
+        if (GUILayout.Button("Save Manager Mesh"))
+        {
+            myScript.SaveMesh();
+        }
+    }
+}
 
 public class TerrainMan : MonoBehaviour
 {
