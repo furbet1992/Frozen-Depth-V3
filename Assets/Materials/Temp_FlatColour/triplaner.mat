@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: triplaner
+  m_Shader: {fileID: 4800000, guid: 8ac32e0680ca39f4493f1b0d7776e31c, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _FrontAlbedo:
+        m_Texture: {fileID: 2800000, guid: 34f56400d5d7cfc449c101bec31b741a, type: 3}
+        m_Scale: {x: 0.005, y: 0.005}
+        m_Offset: {x: 0, y: 0}
+    - _FrontEmission:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FrontMetSmoAlp:
+        m_Texture: {fileID: 2800000, guid: 3f04609605693a049af8909cf7b0bd79, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FrontNormal:
+        m_Texture: {fileID: 2800000, guid: 052c0955a5dd9914f906bf75c0ed6fd8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 4, y: 4}
+    - _RightAlbedo:
+        m_Texture: {fileID: 2800000, guid: 34f56400d5d7cfc449c101bec31b741a, type: 3}
+        m_Scale: {x: 0.005, y: 0.005}
+        m_Offset: {x: 0, y: 0}
+    - _RightEmission:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RightMetSmoAlp:
+        m_Texture: {fileID: 2800000, guid: 3f04609605693a049af8909cf7b0bd79, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RightNormal:
+        m_Texture: {fileID: 2800000, guid: 052c0955a5dd9914f906bf75c0ed6fd8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 8, y: 8}
+    - _TopAlbedo:
+        m_Texture: {fileID: 2800000, guid: 34f56400d5d7cfc449c101bec31b741a, type: 3}
+        m_Scale: {x: 0.005, y: 0.005}
+        m_Offset: {x: 0, y: 0}
+    - _TopEmission:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TopMetSmoAlp:
+        m_Texture: {fileID: 2800000, guid: 3f04609605693a049af8909cf7b0bd79, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TopNormal:
+        m_Texture: {fileID: 2800000, guid: 052c0955a5dd9914f906bf75c0ed6fd8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 2, y: 2}
+    m_Floats: []
+    m_Colors: []
