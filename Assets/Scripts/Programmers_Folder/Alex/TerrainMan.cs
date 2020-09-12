@@ -6,6 +6,7 @@ using UnityEditor;
 using System;
 using System.Security.AccessControl;
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(TerrainMan))]
 public class ObjectBuilderEditor : Editor
 {
@@ -21,7 +22,7 @@ public class ObjectBuilderEditor : Editor
         }
     }
 }
-
+#endif
 public class TerrainMan : MonoBehaviour
 {
     public enum spawnPrefabs

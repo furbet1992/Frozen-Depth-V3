@@ -3,7 +3,7 @@
     Author:    Luke Lazzaro
     Summary: Enables interaction and opens artifact viewer
     Creation Date: 21/07/2020
-    Last Modified: 18/08/2020
+    Last Modified: 8/09/2020
 */
 
 using System;
@@ -19,6 +19,7 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private Transform playerCamera;
     [SerializeField] private MeshFilter artifactViewer;
     [SerializeField] private Text viewerDescription;
+
 
     // Used for enabling and disabling player movement
     private PlayerMovement pmScript;
@@ -46,7 +47,7 @@ public class PlayerInteract : MonoBehaviour
 
                 if (interactable != null)
                 {
-                    EnableArtifactViewer(hit.collider.gameObject);
+                    InteractWithArtifact(hit.collider.gameObject);
                 }
                 else if (key != null)
                 {
@@ -56,6 +57,7 @@ public class PlayerInteract : MonoBehaviour
                 {
                     keyhole.Open();
                 }
+
             }
         }
 
@@ -63,6 +65,21 @@ public class PlayerInteract : MonoBehaviour
         {
             DisableArtifactViewer(true);
         }
+    }
+
+    public void InteractWithArtifact(GameObject obj)
+    {
+        EnableArtifactViewer(obj);
+
+        // Add artifact to save data
+        Interactable artifact = obj.GetComponent<Interactable>();
+
+        if (artifact != null && !ArtifactManager.artifactIds.Contains(artifact.id))
+            ArtifactManager.artifactIds.Add(artifact.id);
+
+        // Show that the artifact has been found in the UI
+        ArtifactDisplay ad = obj.GetComponent<Interactable>().artifactDisplay;
+        if (ad != null) ad.Show();
     }
 
     public void EnableArtifactViewer(GameObject obj)

@@ -3,7 +3,7 @@
     Author:    Luke Lazzaro
     Summary: Handles saving and loading of game data
     Creation Date: 3/08/2020
-    Last Modified: 1/09/2020
+    Last Modified: 8/09/2020
 */
 
 using System.Collections;
@@ -22,7 +22,11 @@ public static class SaveManager
         data.playerPosZ = player.transform.position.z;
         data.toolFuel = player.GetComponent<Tool>().toolFuel;
         data.currentCheckpoint = CheckpointManager.checkpointCounter;
+        data.keys = KeyManager.Instance.keys;
+        data.artifactIds = ArtifactManager.artifactIds;
         // save terrain mesh here
+
+        PrintSaveData(data);
 
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/savedata");
@@ -43,6 +47,10 @@ public static class SaveManager
             player.transform.position = new Vector3(data.playerPosX, data.playerPosY, data.playerPosZ);
             player.GetComponent<Tool>().toolFuel = data.toolFuel;
             CheckpointManager.checkpointCounter = data.currentCheckpoint;
+            KeyManager.Instance.keys = data.keys;
+            ArtifactManager.artifactIds = data.artifactIds;
+
+            PrintSaveData(data);
 
             CheckpointManager.Instance.UpdateCheckpoints();
             SubtitleManager.Instance.UpdateSubtitles();
@@ -55,6 +63,21 @@ public static class SaveManager
         Debug.Log("Player position: (" + data.playerPosX + ", " + data.playerPosY + ", " + data.playerPosZ + ")");
         Debug.Log("Tool fuel: " + data.toolFuel);
         Debug.Log("Checkpoint counter: " + data.currentCheckpoint);
+
+        string message = "Keys: ";
+        foreach (string key in data.keys)
+        {
+            message += key + ", ";
+        }
+        Debug.Log(message);
+
+        message = "Artifacts: ";
+        foreach (string artifact in data.artifactIds)
+        {
+            message += artifact + ", ";
+        }
+        Debug.Log(message);
+
         Debug.Log("---------------------");
     }
 }

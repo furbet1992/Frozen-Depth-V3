@@ -8,53 +8,83 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: triplaner
-  m_Shader: {fileID: 4800000, guid: 22e1e84379d527745bd741610a2e748f, type: 3}
-  m_ShaderKeywords: 
+  m_Shader: {fileID: 4800000, guid: 6272e7523ee014a4ca698e94055497bd, type: 3}
+  m_ShaderKeywords: _APPLYTOEMISSION_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _FrontAlbedo:
+        m_Texture: {fileID: 2800000, guid: 34f56400d5d7cfc449c101bec31b741a, type: 3}
+        m_Scale: {x: 0.005, y: 0.005}
+        m_Offset: {x: 5, y: 5}
     - _FrontEmission:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 0.005, y: 0.005}
+        m_Offset: {x: 5, y: 5}
+    - _FrontMetSmoOccAlp:
+        m_Texture: {fileID: 2800000, guid: f32cc8e669a370b46bb62c903b520ed0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FrontNormal:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 052c0955a5dd9914f906bf75c0ed6fd8, type: 3}
         m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+        m_Offset: {x: 5, y: 5}
     - _FrontTexture:
         m_Texture: {fileID: 2800000, guid: ecfd40e90bb990048957747798c2c7af, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _RightAlbedo:
+        m_Texture: {fileID: 2800000, guid: 34f56400d5d7cfc449c101bec31b741a, type: 3}
+        m_Scale: {x: 0.005, y: 0.005}
+        m_Offset: {x: 1, y: 1}
     - _RightEmission:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 0.005, y: 0.005}
+        m_Offset: {x: 1, y: 1}
+    - _RightMetSmoOccAlp:
+        m_Texture: {fileID: 2800000, guid: f32cc8e669a370b46bb62c903b520ed0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RightNormal:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 052c0955a5dd9914f906bf75c0ed6fd8, type: 3}
         m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+        m_Offset: {x: 5, y: 5}
     - _RightTexture:
         m_Texture: {fileID: 2800000, guid: 61fa497d5718e0446a824460bad83b78, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _TopAlbedo:
+        m_Texture: {fileID: 2800000, guid: 34f56400d5d7cfc449c101bec31b741a, type: 3}
+        m_Scale: {x: 0.005, y: 0.005}
+        m_Offset: {x: 10, y: 10}
     - _TopEmission:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 0.005, y: 0.005}
+        m_Offset: {x: 10, y: 10}
+    - _TopMetSmoOccAlp:
+        m_Texture: {fileID: 2800000, guid: f32cc8e669a370b46bb62c903b520ed0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TopNormal:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+        m_Texture: {fileID: 2800000, guid: 052c0955a5dd9914f906bf75c0ed6fd8, type: 3}
+        m_Scale: {x: 0.1, y: 0.1}
+        m_Offset: {x: 10, y: 10}
     - _TopTexture:
         m_Texture: {fileID: 2800000, guid: 61fa497d5718e0446a824460bad83b78, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Alpha: 0.791
-    m_Colors: []
+    - _AlphaFresnelExponent: 9.53
+    - _ApplyToAlpha: 0
+    - _ApplyToEmission: 1
+    - _EmissionFresnelExponent: 2.25
+    - _NormalMapIntensity: 1
+    m_Colors:
+    - _EmissionFresnelColor: {r: 0.21048418, g: 0.5182021, b: 0.8113208, a: 1}

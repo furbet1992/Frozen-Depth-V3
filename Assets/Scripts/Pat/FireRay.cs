@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FireRay : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class FireRay : MonoBehaviour
     //public Animator gate; 
     public AudioSource button;
 
-
+    //UI
 
 
 
@@ -35,6 +36,7 @@ public class FireRay : MonoBehaviour
     {
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out rayhit, distanceRay))
         {
+
             if (Input.GetMouseButtonDown(0))
             {
                 if (rayhit.collider.gameObject.tag == "Switch")
@@ -47,47 +49,40 @@ public class FireRay : MonoBehaviour
                 //animation of the gate going up 
 
 
-
-
-
-                if (rayhit.collider.gameObject.tag == "Meltable_wall")
+                if (rayhit.collider.gameObject.name == "Artifact")
                 {
+
+                    //delete that artifact
                     Destroy(rayhit.collider.gameObject);
+                    //play sound of earthquake
+                    earthQuake.Play();
+                    smallrockSlide.Play();
+                    fallingStones.SetActive(true);
+                    StartCoroutine(nextSound());
+                    //floor need to open and player falls
                 }
 
-                //if (rayhit.collider.gameObject.name == "Artifact")
-                //{
-
-                //    //delete that artifact
-                //    Destroy(rayhit.collider.gameObject); 
-                //    //play sound of earthquake
-                //    earthQuake.Play();
-                //    smallrockSlide.Play();
-                //    fallingStones.SetActive(true); 
-                //    StartCoroutine(nextSound());
-                //floor need to open and player falls
             }
 
+            IEnumerator nextSound()
+            {
+                yield return new WaitForSeconds(2);
+                largeRockSlide.Play();
+                fallingStones2.SetActive(true);
+                //the floor gates to open
+                gateOpening.Play();
+                hydraulicSound.Play();
+                activation_doorA.SetBool("Activate_Door", true);
+                activation_doorB.SetBool("Activation_Door2", true);
+
+                // level scene
+                gate.transform.position += new Vector3(0f, 2.5f, 0f);
+
+            }
+
+            Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * distanceRay);
+
         }
-
-        IEnumerator nextSound()
-        {
-            yield return new WaitForSeconds(2);
-            //largeRockSlide.Play(); 
-            //fallingStones2.SetActive(true);
-            ////the floor gates to open
-            //gateOpening.Play();
-            //hydraulicSound.Play();
-            //activation_doorA.SetBool("Activate_Door", true);
-            //activation_doorB.SetBool("Activation_Door2", true);
-
-            //level scene
-            gate.transform.position += new Vector3(0f, 2.5f, 0f);
-
-        }
-
-        // Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * distanceRay); 
-
     }
 }
 

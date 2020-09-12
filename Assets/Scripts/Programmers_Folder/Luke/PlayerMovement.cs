@@ -1,9 +1,9 @@
-﻿/*
+/*
     File name: PlayerMovement.cs
     Author:    Luke Lazzaro
     Summary: Adds first person movement to the player
     Creation Date: 20/07/2020
-    Last Modified: 31/08/2020
+    Last Modified: 9/09/2020
 */
 
 using System;
@@ -33,24 +33,29 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float ccCrouchHeight = 2;
     [SerializeField] private float deathVelocity = -20;
 
+    [HideInInspector] public bool willDie = false;
+
     private CharacterController controller;
-    private float groundDistance = 0.4f;
+    private float groundDistance = 0.6f;
     private Vector3 velocity;
     private bool isGrounded;
     private bool isCrouching = true;
     private Vector3 originalPos;
-    private bool willDie = false;
+
+    // used to store the distance between controller.center and the halfway point on the collider
+    private float standCenterHeight = 0f;
 
     private void Start()
     {
         originalPos = transform.position;
         controller = GetComponent<CharacterController>();
+        standCenterHeight = (ccHeight - ccCrouchHeight) * 0.5f;
         Crouch();
     }
 
     private void Update()
     {
-        Debug.Log(velocity.y); 
+        Vector3 temp = new Vector3(controller.center.x, controller.height - controller.center.y, controller.center.z);
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
@@ -100,12 +105,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void Crouch()
     {
-        isCrouching = !isCrouching;
+        if (isCrouching)
+        {
+            if (Physics.Raycast(transform.position, Vector3.up, standCenterHeight + (ccHeight / 2)))
+                return;
+        }
+
+        isCrouching = !isCrouching;        
 
         if (isCrouching)
         {
             controller.height = ccCrouchHeight;
-            Vector3 newCenter = new Vector3(controller.center.x, -0.5f, controller.center.z);
+            Vector3 newCenter = new Vector3(controller.center.x, (controller.center.y - (ccHeight - ccCrouchHeight) * 0.5f), controller.center.z);
             controller.center = newCenter;
 
             float camX = playerCamera.transform.localPosition.x;
@@ -116,7 +127,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             controller.height = ccHeight;
-            Vector3 newCenter = new Vector3(controller.center.x, 0f, controller.center.z);
+            Vector3 newCenter = new Vector3(controller.center.x, (ccHeight - ccCrouchHeight) * 0.5f, controller.center.z);
             controller.center = newCenter;
 
             float camX = playerCamera.transform.localPosition.x;
