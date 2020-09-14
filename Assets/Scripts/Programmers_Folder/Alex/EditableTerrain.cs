@@ -84,13 +84,13 @@ public class EditableTerrain : MonoBehaviour
                     switch (spawnPrefab)
                     {
                         case TerrainMan.spawnPrefabs.FlatAtBottom:
-                            terrainMap[x, y, z].value = (managerIndex.y > 0) ? 0.0f : (float)y - height / 4;
+                            terrainMap[x, y, z].value = (managerIndex.y > 0) ? 1.0f : 0.0f;
                             break;
                         case TerrainMan.spawnPrefabs.FlatAtTop:
-                            terrainMap[x, y, z].value = (managerIndex.y < manager.terrainTotalY - 1) ? 0.0f : (float)y - height / 4;
+                            terrainMap[x, y, z].value = (managerIndex.y < manager.terrainTotalY - 1) ? 0.0f : 1.0f;
                             break;
                         case TerrainMan.spawnPrefabs.HalfFill:
-                            terrainMap[x, y, z].value = (managerIndex.y > manager.terrainTotalY / 2) ? 1.0f : 0.5f;
+                            terrainMap[x, y, z].value = (managerIndex.y >= manager.terrainTotalY / 2) ? 1.0f : 0.0f;
                             break;
                         case TerrainMan.spawnPrefabs.Bowl:
                             terrainMap[x, y, z].value = (managerIndex.y == 0 || managerIndex.x == 0 || managerIndex.z == 0 || managerIndex.x == manager.terrainTotalX - 1 || managerIndex.z == manager.terrainTotalZ - 1) ? 0.0f : 1.0f;
@@ -170,16 +170,17 @@ public class EditableTerrain : MonoBehaviour
                     if (offsetVec.magnitude < radius)
                     {
                         Vector3 newPoint = v3Int + offsetVec;
-
+                        float newStrength = strength - Vector3.Distance(pos, transform.position + offsetVec);
+                        newStrength = Mathf.Lerp(0,1,newStrength);
                         if (newPoint.x < 0 || newPoint.y < 0 || newPoint.z < 0 || newPoint.x > width || newPoint.y > height || newPoint.z > depth)
                         {
                             continue;
                         }
 
                         if (freeze)
-                            terrainMap[(int)newPoint.x, (int)newPoint.y, (int)newPoint.z].value -= strength;
+                            terrainMap[(int)newPoint.x, (int)newPoint.y, (int)newPoint.z].value -= newStrength;
                         else
-                            terrainMap[(int)newPoint.x, (int)newPoint.y, (int)newPoint.z].value += strength;
+                            terrainMap[(int)newPoint.x, (int)newPoint.y, (int)newPoint.z].value += newStrength;
                     }
                 }
             }
@@ -187,6 +188,7 @@ public class EditableTerrain : MonoBehaviour
 
         CreateMeshData();
         UpdateNeighbours(v3Int, radius);
+        Debug.Log("Hit");
 
         return true;
     }

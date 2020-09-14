@@ -12,7 +12,14 @@ public class TriggleToggle : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            toggleObject.SetActive(false);
+            toggleObject.SetActive(true);
+            StartCoroutine(turnOffUi());
         }
+    }
+
+    IEnumerator turnOffUi()
+    {
+        yield return new WaitForSeconds(1);
+        toggleObject.SetActive(false); 
     }
 }

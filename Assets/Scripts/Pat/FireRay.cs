@@ -37,18 +37,9 @@ public class FireRay : MonoBehaviour
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out rayhit, distanceRay))
         {
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetKey(KeyCode.E))
             {
-                if (rayhit.collider.gameObject.tag == "Switch")
-                {
-                    Debug.Log("pressed");
-                    button.Play();
-                    StartCoroutine(nextSound());
-                }
-                //button sound
-                //animation of the gate going up 
-
-
+             
                 if (rayhit.collider.gameObject.name == "Artifact")
                 {
 
