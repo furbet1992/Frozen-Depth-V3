@@ -3,7 +3,7 @@
     Author:    Luke Lazzaro
     Summary: Enables interaction and opens artifact viewer
     Creation Date: 21/07/2020
-    Last Modified: 8/09/2020
+    Last Modified: 15/09/2020
 */
 
 using System;
@@ -20,15 +20,18 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private MeshFilter artifactViewer;
     [SerializeField] private Text viewerDescription;
 
-
     // Used for enabling and disabling player movement
     private PlayerMovement pmScript;
     private MouseLook mlScript;
+
+    // Used for enabling tool freezing
+    private Tool toolScript;
 
     private void Awake()
     {
         pmScript = GetComponent<PlayerMovement>();
         mlScript = playerCamera.gameObject.GetComponent<MouseLook>();
+        toolScript = GetComponent<Tool>();
     }
 
     private void Update()
@@ -57,7 +60,11 @@ public class PlayerInteract : MonoBehaviour
                 {
                     keyhole.Open();
                 }
-
+                else if (hit.collider.CompareTag("Tool Component"))
+                {
+                    toolScript.canFreeze = true;
+                    hit.collider.gameObject.SetActive(false);
+                }
             }
         }
 

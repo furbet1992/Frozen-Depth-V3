@@ -31,18 +31,6 @@ public class startLevel : MonoBehaviour
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out rayhit, distanceRay))
         {
             
-
-                if (rayhit.collider.gameObject.layer == LayerMask.NameToLayer("Interactable"))
-                {
-                    interactable.SetActive(true);
-                }
-                if (rayhit.collider.gameObject.layer != LayerMask.NameToLayer("Interactable"))
-                {
-                    interactable.SetActive(false);
-                }
-
-
-
             if (Input.GetKey(KeyCode.E))
             {
                 if (rayhit.collider.gameObject.tag == "gun")
