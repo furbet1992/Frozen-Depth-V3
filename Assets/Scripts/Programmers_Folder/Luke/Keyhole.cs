@@ -28,6 +28,7 @@ public class Keyhole : MonoBehaviour
     private Vector3 originalPos;
     private bool isRising = false;
 
+
     private void Start()
     {
         originalPos = objectToOpen.transform.position;
