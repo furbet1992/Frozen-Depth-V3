@@ -46,8 +46,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dfc36df21a137a4b94e2b0ddf3f2e34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothTerrain: 1
+  smoothTerrain: 0
   flatShaded: 1
+  vertices: []
+  triangles: 
+  uvs: []
+  spawnPrefab: 0
 --- !u!33 &5050879582006432436
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -73,7 +77,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 94a026a715acd4046ba77cd73a6d2bc9, type: 2}
+  - {fileID: 2100000, guid: 5ffeb9a16d9b7e94c8117f36f86458c3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

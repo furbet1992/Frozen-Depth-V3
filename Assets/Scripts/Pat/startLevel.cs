@@ -15,23 +15,12 @@ public class startLevel : MonoBehaviour
 
     public GameObject gunInHand;
 
-
-    public AudioSource rocksCrashing;
-    public GameObject rocksFalling;
-    public GameObject rocksPlacement;
-
-    public static int fallOnce = 0;
-
-
-    // public GameObject gunProp; 
-
-
     void Update()
     {
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out rayhit, distanceRay))
         {
             
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetKey(KeyCode.U))
             {
                 if (rayhit.collider.gameObject.tag == "gun")
                 {
@@ -41,19 +30,11 @@ public class startLevel : MonoBehaviour
                     meltTutorial.SetActive(true);
                 }
 
-                if (rayhit.collider.gameObject.tag == "gun2")
+                if (rayhit.collider.gameObject.tag == "Tool Component")
                 {
                     //Debug.Log("hit");
                     Destroy(rayhit.collider.gameObject);
                     CreateTutorial.SetActive(true);
-                    if (fallOnce == 0)
-                    {
-                        fallOnce = 1;
-                        //animate rocks falling
-                        // sound of rocks crashing
-                        rocksCrashing.Play();
-                        StartCoroutine(RocksFalling());
-                    }
                 }
             }
 
@@ -64,17 +45,7 @@ public class startLevel : MonoBehaviour
                     }
                 }
 
-         }
-     
-
-
-        IEnumerator RocksFalling()
-            {
-                  Debug.Log("rocksFalling"); 
-                yield return new WaitForSeconds(2);
-                rocksFalling.transform.position = UnityEngine.Vector3.MoveTowards(rocksFalling.transform.position, rocksPlacement.transform.position, 100);
-
-             }
+     }
 
 }
 

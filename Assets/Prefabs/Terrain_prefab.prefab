@@ -43,15 +43,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 5617590451199118027}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5da5cdf35ef32e1498efefce4967d5a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 1dfc36df21a137a4b94e2b0ddf3f2e34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   smoothTerrain: 0
-  flatShaded: 1
+  flatShaded: 0
   vertices: []
   triangles: 
   uvs: []
-  spawnPrefab: 8
+  spawnPrefab: 0
 --- !u!33 &8096013442753439175
 MeshFilter:
   m_ObjectHideFlags: 0
