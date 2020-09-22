@@ -20,7 +20,7 @@ public class startLevel : MonoBehaviour
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out rayhit, distanceRay))
         {
             
-            if (Input.GetKey(KeyCode.U))
+            if (Input.GetKey(KeyCode.E))
             {
                 if (rayhit.collider.gameObject.tag == "gun")
                 {
