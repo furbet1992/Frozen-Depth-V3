@@ -25,10 +25,10 @@ Material:
         m_Offset: {x: 5, y: 5}
     - _FrontEmission:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 0.005, y: 0.005}
+        m_Scale: {x: 0.1, y: 0.1}
         m_Offset: {x: 5, y: 5}
     - _FrontMetSmoOccAlp:
-        m_Texture: {fileID: 2800000, guid: f32cc8e669a370b46bb62c903b520ed0, type: 3}
+        m_Texture: {fileID: 2800000, guid: d1ee3d6909e8422448f98a1c483386d6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FrontNormal:
@@ -45,10 +45,10 @@ Material:
         m_Offset: {x: 1, y: 1}
     - _RightEmission:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 0.005, y: 0.005}
+        m_Scale: {x: 0.1, y: 0.1}
         m_Offset: {x: 1, y: 1}
     - _RightMetSmoOccAlp:
-        m_Texture: {fileID: 2800000, guid: f32cc8e669a370b46bb62c903b520ed0, type: 3}
+        m_Texture: {fileID: 2800000, guid: d1ee3d6909e8422448f98a1c483386d6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RightNormal:
@@ -65,10 +65,10 @@ Material:
         m_Offset: {x: 10, y: 10}
     - _TopEmission:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 0.005, y: 0.005}
+        m_Scale: {x: 0.1, y: 0.1}
         m_Offset: {x: 10, y: 10}
     - _TopMetSmoOccAlp:
-        m_Texture: {fileID: 2800000, guid: f32cc8e669a370b46bb62c903b520ed0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 66fa0a4a1477617478a39ce37b903e81, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TopNormal:
@@ -81,7 +81,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Alpha: 0.791
-    - _AlphaFresnelExponent: 9.53
+    - _AlphaFresnelExponent: 10
     - _ApplyToAlpha: 0
     - _ApplyToEmission: 1
     - _EmissionFresnelExponent: 2.25
