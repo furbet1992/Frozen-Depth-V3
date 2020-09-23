@@ -79,6 +79,7 @@ public class EditableTerrain : MonoBehaviour
         }
     }
 
+    // This needs to be optimized
     public void PopulateTerrainMap()
     {
         int xOffSet = width * managerIndex.x;
@@ -124,9 +125,6 @@ public class EditableTerrain : MonoBehaviour
                         case TerrainMan.spawnPrefabs.ZNegWall:
                             terrainMap[x, y, z].value = (managerIndex.z > manager.terrainTotalZ * 0.5) ? 1.0f : 0.0f;
                             break;
-                        case TerrainMan.spawnPrefabs.PreMade:
-                            LoadFromFile(x, y, z);
-                            break;
                         case TerrainMan.spawnPrefabs.CubePreMade:
                             Vector3Int vertPos = new Vector3Int(x + xOffSet, y + yOffSet, z + zOffSet);
 
@@ -149,11 +147,6 @@ public class EditableTerrain : MonoBehaviour
             }
         }
 
-
-    }
-
-    public void LoadFromFile(int x, int y, int z)
-    {
 
     }
 

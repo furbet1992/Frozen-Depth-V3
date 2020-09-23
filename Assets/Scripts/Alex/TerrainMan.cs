@@ -13,6 +13,7 @@ using UnityEngine;
 using UnityEditor;
 using System;
 using System.Security.AccessControl;
+using UnityEngine.UI;
 
 #if UNITY_EDITOR
 [CustomEditor(typeof(TerrainMan))]
@@ -108,6 +109,12 @@ public class TerrainMan : MonoBehaviour
     Vector3 ChunkTotal;
 
     MeshRenderer[] chunkRenderers;
+    bool isInDistance = false;
+    bool isCreated = false, isBeingInstantiated = false, isBeingAssigned = false;
+    Vector3 currentManPos;
+    int chunkRendererCount = 0;
+    public Slider slider;
+
 
     void OnDrawGizmosSelected()
     {
@@ -163,21 +170,36 @@ public class TerrainMan : MonoBehaviour
 
     void Start()
     {
+        currentManPos = transform.position;
+        chunkRenderers = new MeshRenderer[terrainTotalX * terrainTotalY * terrainTotalZ];
+        centerOfMeshes = new Vector3((chunkSize * terrainTotalX) * 0.5f, (chunkSize * terrainTotalY) * 0.5f, (chunkSize * terrainTotalZ) * 0.5f) + currentManPos;
+        ChunkTotal = new Vector3(terrainTotalX, terrainTotalY, terrainTotalZ);
+
         foreach (Transform child in transform)
         {
             Vector3 halfScale = new Vector3(child.localScale.x / 2.0f + 1, child.localScale.y / 2.0f + 1, child.localScale.z / 2.0f + 1);
             aabb newAABB = new aabb(child.position + halfScale, child.position - halfScale);
             fillSpots.Add(newAABB);
-            child.GetComponent<MeshRenderer>().enabled = false;
+            child.gameObject.SetActive(false);
         }
 
-        Vector3 currentManPos = transform.position;
-        chunkRenderers = new MeshRenderer[terrainTotalX * terrainTotalY * terrainTotalZ];
-        centerOfMeshes = new Vector3((chunkSize * terrainTotalX) * 0.5f, (chunkSize * terrainTotalY) * 0.5f, (chunkSize * terrainTotalZ) * 0.5f) + currentManPos;
-        ChunkTotal = new Vector3(terrainTotalX, terrainTotalY, terrainTotalZ);
-        int i = 0;
-        
-        for (int x = 0; x < terrainTotalX; x++)
+    }
+
+    void CreateManager()
+    {
+        isBeingInstantiated = false;
+        isCreated = true;
+
+        AssignEdgeValues();
+
+        RefreshAllChunks();
+    }
+
+    int frameCount = 0;
+    int totalFramesToGenerate;
+    void GenerateSomeChunks(int totalFrames)
+    {
+        for (int x = (terrainTotalX / totalFrames) * frameCount; x < (terrainTotalX / totalFrames) * (frameCount + 1); x++)
         {
             terrains.Add(new List<List<EditableTerrain>>());
             terrainsOBJS.Add(new List<List<GameObject>>());
@@ -191,60 +213,61 @@ public class TerrainMan : MonoBehaviour
                     terrainsOBJS[x][y][z].name = x + ", " + y + ", " + z;
                     terrains[x][y].Add(terrainsOBJS[x][y][z].GetComponent<EditableTerrain>());
                     terrains[x][y][z].spawnPrefab = chunkPrefab;
-                    terrains[x][y][z].CreateMesh(this, new Vector3Int(x,y, z), new Vector3Int(chunkSize - 1, chunkSize - 1, chunkSize - 1));
+                    terrains[x][y][z].CreateMesh(this, new Vector3Int(x, y, z), new Vector3Int(chunkSize - 1, chunkSize - 1, chunkSize - 1));
                     terrains[x][y][z].flatShaded = flatShaded;
                     terrains[x][y][z].smoothTerrain = smoothTerrain;
                     terrains[x][y][z].transform.parent = transform;
-
-                    chunkRenderers[i] = terrains[x][y][z].GetComponent<MeshRenderer>();
-                    i++;
+                    terrains[x][y][z].PopulateTerrainMap();
+                    chunkRenderers[chunkRendererCount] = terrains[x][y][z].GetComponent<MeshRenderer>();
+                    chunkRendererCount++;
                 }
             }
         }
 
-
-
-
-        AssignEdgeValues();
-        
-        if (chunkPrefab == spawnPrefabs.PreMade)
-            LoadMesh();
-        else
-            PopulateAllChunks();
-
-        AssignEdgeValues();
-        
-        RefreshAllChunks();
+        if ((terrainTotalX / totalFrames) * (frameCount + 1) == terrainTotalX)
+            CreateManager();
     }
-
-    bool isInDistance = true;
+    float timer = 0.0f;
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.P))
-            RefreshAllChunks();
+        totalFramesToGenerate = terrainTotalX / 2;
+        timer += Time.deltaTime;
+        if (isBeingInstantiated && timer > 0.1f)
+        {
+            if (frameCount < totalFramesToGenerate)
+                GenerateSomeChunks(totalFramesToGenerate);
+            timer = 0.0f;
+            slider.value = (((float)totalFramesToGenerate + (float)frameCount + 1) / (float)totalFramesToGenerate - 1);
+            frameCount++;
+        }
 
-       // if (isInDistance == true)
-       // {
-       //     if (Vector3.Distance(player.transform.position, centerOfMeshes) > maxDistanceFromMesh)
-       //     {
-       //         isInDistance = false;
-       //         for (int i = 0; i < chunkRenderers.Length; i++)
-       //             chunkRenderers[i].enabled = false;
-       //
-       //         Debug.Log("Disabled renderers");
-       //     }
-       // }
-       // else if(Vector3.Distance(player.transform.position, centerOfMeshes) <= maxDistanceFromMesh)
-       // {
-       //     if (isInDistance == false)
-       //     {
-       //         for (int i = 0; i < chunkRenderers.Length; i++)
-       //             chunkRenderers[i].enabled = true;
-       //     }
-       //
-       //         Debug.Log("Enabled renderers");
-       //     isInDistance = true;
-       // }
+
+        if (isInDistance == true)
+        {
+            if (Vector3.Distance(player.transform.position, centerOfMeshes) > maxDistanceFromMesh)
+            {
+                isInDistance = false;
+                for (int i = 0; i < chunkRenderers.Length; i++)
+                    chunkRenderers[i].enabled = false;
+            }
+        }
+        else if(Vector3.Distance(player.transform.position, centerOfMeshes) <= maxDistanceFromMesh)
+        {
+            if (isInDistance == false)
+            {
+                if (!isCreated)
+                {
+                    isBeingInstantiated = true;
+                }
+                else
+                {
+                    isInDistance = true;
+                    for (int i = 0; i < chunkRendererCount; i++)
+                        chunkRenderers[i].enabled = true;
+                }
+            }
+        
+        }
     }
 
 

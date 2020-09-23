@@ -118,6 +118,7 @@
     <None Include="Assets\TerrainSaves\Start_Tunnel_Tute.txt" />
     <None Include="Assets\TerrainSaves\Hut.txt" />
     <None Include="Assets\TerrainSaves\Level1_minicave_01.txt" />
+    <None Include="Assets\TerrainSaves\Tunnel Terrain (1).txt" />
     <None Include="Assets\TerrainSaves\Tunnel.txt" />
     <None Include="Assets\TerrainSaves\Start_Terrain (1).txt" />
     <None Include="Assets\TerrainSaves\SideWall.txt" />
@@ -140,6 +141,7 @@
     <None Include="Assets\TerrainSaves\Ice Creation Tute.txt" />
     <None Include="Assets\TerrainSaves\SpawnIceMesh Variant.txt" />
     <None Include="Assets\Materials\Shader\Scroll.shader" />
+    <None Include="Assets\Materials\Shader\TriplanarOpaque.shader" />
     <None Include="Assets\TerrainSaves\Cliff Tutorial.txt" />
     <None Include="Assets\TerrainSaves\LeftWall.txt" />
     <None Include="Assets\TerrainSaves\Warehouse_minicave01_VerticalWall (1).txt" />
@@ -152,6 +154,9 @@
     <None Include="Assets\TerrainSaves\Start_Tunnel_Terrain (1).txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/alexm/Desktop/Repos/Frozen-Depth-V3/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProGrids">
+      <HintPath>C:/Users/alexm/Desktop/Repos/Frozen-Depth-V3/Library/ScriptAssemblies/Unity.ProGrids.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>C:/Users/alexm/Desktop/Repos/Frozen-Depth-V3/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
@@ -167,6 +172,9 @@
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
       <HintPath>C:/Users/alexm/Desktop/Repos/Frozen-Depth-V3/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProGrids.Editor">
+      <HintPath>C:/Users/alexm/Desktop/Repos/Frozen-Depth-V3/Library/ScriptAssemblies/Unity.ProGrids.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/alexm/Desktop/Repos/Frozen-Depth-V3/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
@@ -215,12 +223,6 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>C:/Users/alexm/Desktop/Repos/Frozen-Depth-V3/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ProGrids">
-      <HintPath>C:/Users/alexm/Desktop/Repos/Frozen-Depth-V3/Library/ScriptAssemblies/Unity.ProGrids.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ProGrids.Editor">
-      <HintPath>C:/Users/alexm/Desktop/Repos/Frozen-Depth-V3/Library/ScriptAssemblies/Unity.ProGrids.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.17f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
