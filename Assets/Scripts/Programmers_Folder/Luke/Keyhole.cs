@@ -1,9 +1,9 @@
-﻿/*
+/*
     File name: Keyhole.cs
     Author:    Luke Lazzaro
     Summary: Does something if the player has a required key
     Creation Date: 31/08/2020
-    Last Modified: 7/09/2020
+    Last Modified: 21/09/2020
 */
 
 using System.Collections;
@@ -20,6 +20,7 @@ public class Keyhole : MonoBehaviour
     [SerializeField] private string id = "";
     [SerializeField] private GameObject objectToOpen;
     [SerializeField] private OpenBehaviour openBehaviour = OpenBehaviour.RisingDoor;
+    [SerializeField] private GameObject placeForKeyMesh;
 
     [Header("Rising Door")]
     [SerializeField] private Vector3 targetPos = new Vector3();
@@ -27,7 +28,6 @@ public class Keyhole : MonoBehaviour
 
     private Vector3 originalPos;
     private bool isRising = false;
-
 
     private void Start()
     {
@@ -50,9 +50,29 @@ public class Keyhole : MonoBehaviour
             case OpenBehaviour.RisingDoor:
                 Debug.Log("Opening door...");
                 isRising = true;
+
+                AudioSource source = objectToOpen.GetComponent<AudioSource>();
+                if (source.clip != null)
+                    source.Play();
+
                 break;
             default:
                 break;
+        }
+
+        PlaceKeyOnKeyhole();
+    }
+
+    private void PlaceKeyOnKeyhole()
+    {
+        foreach (KeyLookup item in KeyManager.Instance.keyLookup)
+        {
+            if (id == item.keyId)
+            {
+                placeForKeyMesh.SetActive(true);
+                placeForKeyMesh.GetComponent<MeshFilter>().mesh = item.keyObject.GetComponent<MeshFilter>().mesh;
+                placeForKeyMesh.GetComponent<MeshRenderer>().material = item.keyObject.GetComponent<MeshRenderer>().material;
+            }
         }
     }
 
