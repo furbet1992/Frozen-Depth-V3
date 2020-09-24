@@ -73,7 +73,7 @@ public class EditableTerrain : MonoBehaviour
             {
                 for (int z = 0; z < depth + 1; z++)
                 {
-                        terrainMap[x, y, z] = new floatMyGuy(0.0f);
+                        terrainMap[x, y, z] = new floatMyGuy(1.0f);
                 }
             }
         }
@@ -87,6 +87,33 @@ public class EditableTerrain : MonoBehaviour
         int zOffSet = depth * managerIndex.z;
 
         Vector3Int managerPosInt = new Vector3Int((int)manager.transform.position.x, (int)manager.transform.position.y, (int)manager.transform.position.z);
+        Vector3Int CenterOfChunk = new Vector3Int(width / 2 + xOffSet, height / 2 + yOffSet, depth / 2 + zOffSet);
+        Vector3 chunkScale = new Vector3(width + 1, height + 1, depth + 1);
+        List<aabb> collidingCubes = new List<aabb>();
+        
+        foreach (aabb cube in manager.fillSpots)
+        {
+            if (cube.checkCollision(CenterOfChunk + managerPosInt, chunkScale))
+            {
+                collidingCubes.Add(cube);
+            }
+        }
+
+        if (collidingCubes.Count <= 0)
+        {
+            return;
+        }
+
+        //foreach (aabb cube in manager.fillSpots)
+        //{
+        //    if (cube.checkCollision(CenterOfChunk + managerPosInt, chunkScale))
+        //    {
+        //        terrainMap[x, y, z].value = 0.2f;
+        //        break;
+        //    }
+        //}
+
+
 
         for (int x = 0; x < width + 1; x++)
         {
@@ -128,9 +155,9 @@ public class EditableTerrain : MonoBehaviour
                         case TerrainMan.spawnPrefabs.CubePreMade:
                             Vector3Int vertPos = new Vector3Int(x + xOffSet, y + yOffSet, z + zOffSet);
 
-                            foreach (aabb cube in manager.fillSpots)
+                            foreach (aabb cube in collidingCubes)
                             {
-                                if (cube.IsColliding(vertPos + managerPosInt))
+                                if (cube.checkCollision(vertPos + managerPosInt))
                                 {
                                     terrainMap[x, y, z].value = 0.2f;
                                     break;

@@ -35,20 +35,44 @@ public class ObjectBuilderEditor : Editor
 
 public class aabb
 {
-    public aabb(Vector3 pointOne, Vector3 pointTwo)
+    public aabb(Vector3 pointOne, Vector3 pointTwo, Vector3 pos, Vector3 scale)
     {
         posOne = pointOne;
         posTwo = pointTwo;
+        centerPos = pos;
+        this.scale = scale;
     }
 
-    public bool IsColliding(Vector3Int point)
+    public bool checkCollision(Vector3Int point)
     {
         return ((posOne.x > point.x && posOne.y > point.y && posOne.z > point.z)
             && (posTwo.x < point.x && posTwo.y < point.y && posTwo.z < point.z) );
     }
 
+    public bool checkCollision(Vector3 secondCenterPos, Vector3 secondScale)
+    {
+        //check the X axis
+        if (centerPos.x - secondCenterPos.x < scale.x + secondScale.x)
+        {
+            //check the Y axis
+            if (centerPos.y - secondCenterPos.y < scale.y + secondScale.y)
+            {
+                //check the Z axis
+                if (centerPos.z - secondCenterPos.z < scale.z + secondScale.z)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
     public Vector3 posOne;
     public Vector3 posTwo;
+
+    public Vector3 centerPos;
+    public Vector3 scale;
 }
 
 
@@ -178,7 +202,7 @@ public class TerrainMan : MonoBehaviour
         foreach (Transform child in transform)
         {
             Vector3 halfScale = new Vector3(child.localScale.x / 2.0f + 1, child.localScale.y / 2.0f + 1, child.localScale.z / 2.0f + 1);
-            aabb newAABB = new aabb(child.position + halfScale, child.position - halfScale);
+            aabb newAABB = new aabb(child.position + halfScale, child.position - halfScale, child.position, child.localScale);
             fillSpots.Add(newAABB);
             child.gameObject.SetActive(false);
         }
