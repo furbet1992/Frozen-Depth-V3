@@ -20,6 +20,7 @@ public class FireRay : MonoBehaviour
 
     public Animator activation_doorA;
     public Animator activation_doorB;
+    public Animator barrier; 
 
     //Button
     private LayerMask interactableAction;
@@ -45,10 +46,13 @@ public class FireRay : MonoBehaviour
 
                     //delete that artifact
                     Destroy(rayhit.collider.gameObject);
+
                     //play sound of earthquake
                     earthQuake.Play();
                     smallrockSlide.Play();
                     fallingStones.SetActive(true);
+                   // barrier.SetBool("Raise", true);
+
                     StartCoroutine(nextSound());
                     //floor need to open and player falls
                 }
