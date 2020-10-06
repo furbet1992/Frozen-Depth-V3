@@ -32,9 +32,6 @@ public class EditableTerrain : MonoBehaviour
     public TerrainMan manager;
     Vector3Int managerIndex;
 
-    public bool smoothTerrain;
-    public bool flatShaded;
-
     public List<Vector3> vertices = new List<Vector3>();
     public List<int> triangles = new List<int>();
     public List<Vector2> uvs = new List<Vector2>();
@@ -46,8 +43,6 @@ public class EditableTerrain : MonoBehaviour
     int height = 5;
     int width = 5;
     int depth = 5;
-
-    public TerrainMan.spawnPrefabs spawnPrefab;
 
     public floatMyGuy[,,] terrainMap;
 
@@ -104,17 +99,6 @@ public class EditableTerrain : MonoBehaviour
             return;
         }
 
-        //foreach (aabb cube in manager.fillSpots)
-        //{
-        //    if (cube.checkCollision(CenterOfChunk + managerPosInt, chunkScale))
-        //    {
-        //        terrainMap[x, y, z].value = 0.2f;
-        //        break;
-        //    }
-        //}
-
-
-
         for (int x = 0; x < width + 1; x++)
         {
             for (int y = 0; y < height + 1; y++)
@@ -126,56 +110,24 @@ public class EditableTerrain : MonoBehaviour
                     else
                         terrainMap[x, y, z].value = 0.0f;
 
-                    switch (spawnPrefab)
+                    Vector3Int vertPos = new Vector3Int(x + xOffSet, y + yOffSet, z + zOffSet);
+
+                    foreach (aabb cube in collidingCubes)
                     {
-                        case TerrainMan.spawnPrefabs.FlatAtBottom:
-                            terrainMap[x, y, z].value = (managerIndex.y > 0) ? 1.0f : 0.0f;
+                        if (cube.checkCollision(vertPos + managerPosInt))
+                        {
+                            terrainMap[x, y, z].value = 0.2f;
                             break;
-                        case TerrainMan.spawnPrefabs.FlatAtTop:
-                            terrainMap[x, y, z].value = (managerIndex.y < manager.terrainTotalY - 1) ? 0.0f : 1.0f;
-                            break;
-                        case TerrainMan.spawnPrefabs.HalfFill:
-                            terrainMap[x, y, z].value = (managerIndex.y >= manager.terrainTotalY / 2) ? 1.0f : 0.0f;
-                            break;
-                        case TerrainMan.spawnPrefabs.Bowl:
-                            terrainMap[x, y, z].value = (managerIndex.y == 0 || managerIndex.x == 0 || managerIndex.z == 0 || managerIndex.x == manager.terrainTotalX - 1 || managerIndex.z == manager.terrainTotalZ - 1) ? 0.0f : 1.0f;
-                            break;
-                        case TerrainMan.spawnPrefabs.XPlusWall:
-                            terrainMap[x, y, z].value = (managerIndex.x > manager.terrainTotalX * 0.5) ? 0.0f : 1.0f;
-                            break;
-                        case TerrainMan.spawnPrefabs.XNegWall:
-                            terrainMap[x, y, z].value = (managerIndex.x > manager.terrainTotalX * 0.5) ? 1.0f : 0.0f;
-                            break;
-                        case TerrainMan.spawnPrefabs.ZPlusWall:
-                            terrainMap[x, y, z].value = (managerIndex.z > manager.terrainTotalZ * 0.5) ? 0.0f : 1.0f;
-                            break;
-                        case TerrainMan.spawnPrefabs.ZNegWall:
-                            terrainMap[x, y, z].value = (managerIndex.z > manager.terrainTotalZ * 0.5) ? 1.0f : 0.0f;
-                            break;
-                        case TerrainMan.spawnPrefabs.CubePreMade:
-                            Vector3Int vertPos = new Vector3Int(x + xOffSet, y + yOffSet, z + zOffSet);
-
-                            foreach (aabb cube in collidingCubes)
-                            {
-                                if (cube.checkCollision(vertPos + managerPosInt))
-                                {
-                                    terrainMap[x, y, z].value = 0.2f;
-                                    break;
-                                }
-                                else
-                                    terrainMap[x, y, z].value = 1.0f;
-                            }
-
-                            break;
-                        default:
-                            break;
+                        }
+                        else
+                            terrainMap[x, y, z].value = 1.0f;
                     }
+
                 }
             }
         }
-
-
     }
+
 
     public void CreateMeshData()
     {
@@ -384,8 +336,8 @@ public class EditableTerrain : MonoBehaviour
                 Vector3 vert2 = position + CornerTable[EdgeIndexes[indice, 1]];
 
                 Vector3 vertPosition;
-                if (smoothTerrain)
-                {
+
+                // Smooth terrain
                     float vert1Sample = cube[EdgeIndexes[indice, 0]];
                     float vert2Sample = cube[EdgeIndexes[indice, 1]];
 
@@ -397,23 +349,12 @@ public class EditableTerrain : MonoBehaviour
                         difference = (terrainSurface - vert1Sample) / difference;
 
                     vertPosition = (vert1 + ((vert2 - vert1) * difference));
-                }
-                else
-                {
-                    vertPosition = ((vert1 + vert2) / 2.0f);
-                }
 
+                // Flat Shaded
+                    vertices.Add(vertPosition);
+                    triangles.Add(vertices.Count - 1);
+                    uvs.Add(new Vector2(0.5f, 0.5f));
 
-                    if (flatShaded)
-                    {
-                        vertices.Add(vertPosition);
-                        triangles.Add(vertices.Count - 1);
-                        uvs.Add(new Vector2(0.5f, 0.5f));
-                    }
-                    else
-                    {
-                        triangles.Add(VertForIndice(vertPosition));
-                    }
                 edgeIndex++;
             }
         }
