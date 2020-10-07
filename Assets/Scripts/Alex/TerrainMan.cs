@@ -16,23 +16,6 @@ using System.Security.AccessControl;
 using UnityEngine.UI;
 using UnityEngine.Rendering.PostProcessing;
 
-#if UNITY_EDITOR
-[CustomEditor(typeof(TerrainMan))]
-public class ObjectBuilderEditor : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        DrawDefaultInspector();
-
-        TerrainMan myScript = (TerrainMan)target;
-
-        if (GUILayout.Button("Save Manager Mesh"))
-        {
-            myScript.SaveMesh(true);
-        }
-    }
-}
-#endif
 
 public class aabb
 {
@@ -96,9 +79,9 @@ public class TerrainMan : MonoBehaviour
 
     [Header("Total Chunks")]
     [Tooltip("This will determine how many chunks will be spawned in each axis")]
-    [Range(1, 15)] public int terrainTotalX = 10;
-    [Range(1, 15)] public int terrainTotalY = 10;
-    [Range(1, 15)] public int terrainTotalZ = 10;
+    [Range(1, 20)] public int terrainTotalX = 10;
+    [Range(1, 20)] public int terrainTotalY = 10;
+    [Range(1, 20)] public int terrainTotalZ = 10;
 
     [Header("Single Chunk Size")]
     [Tooltip("Terrain Width: X, TerrainHeight: Y, TerrainDepth: Z")]
@@ -207,7 +190,6 @@ public class TerrainMan : MonoBehaviour
         AssignEdgeValues();
         RefreshAllChunks();
     }
-
 
     void GenerateSomeChunks(int totalFrames)
     {

@@ -116,7 +116,7 @@ public class EditableTerrain : MonoBehaviour
                     {
                         if (cube.checkCollision(vertPos + managerPosInt))
                         {
-                            terrainMap[x, y, z].value = 0.2f;
+                            terrainMap[x, y, z].value = -10f;
                             break;
                         }
                         else
@@ -186,7 +186,7 @@ public class EditableTerrain : MonoBehaviour
                         else
                             terrainMap[(int)newPoint.x, (int)newPoint.y, (int)newPoint.z].value += strength;
 
-                        //terrainMap[(int)newPoint.x, (int)newPoint.y, (int)newPoint.z].value = Mathf.Clamp(terrainMap[(int)newPoint.x, (int)newPoint.y, (int)newPoint.z].value, 0, 1);
+                        terrainMap[(int)newPoint.x, (int)newPoint.y, (int)newPoint.z].value = Mathf.Clamp(terrainMap[(int)newPoint.x, (int)newPoint.y, (int)newPoint.z].value, -10, 1);
                     }
                 }
             }
