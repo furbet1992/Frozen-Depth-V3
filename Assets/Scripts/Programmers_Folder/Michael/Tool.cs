@@ -39,6 +39,7 @@ public class Tool : MonoBehaviour
 
     [Header("Laser")]
     [SerializeField] GameObject laser;
+    [SerializeField] Transform tool;
     [SerializeField] Transform laserStartPoint;
     [SerializeField] Material burnLaserMaterial;
     [SerializeField] Material freezeLaserMaterial;
@@ -47,6 +48,11 @@ public class Tool : MonoBehaviour
 
     private void Start()
     {
+        // set the ice creator to be at the furthest point the tool can hit
+        iceCreator.transform.position = playerCamera.transform.position + playerCamera.transform.forward * maxRange;
+        // point the tool towards the ice creator
+        tool.LookAt(iceCreator.transform);
+
         // set the scale of the ice creator based on the effect radius
         iceCreator.transform.localScale = new Vector3(effectRadius * 0.5f, effectRadius * 0.5f, effectRadius * 0.5f);
         // set the ice creator to be inactive
@@ -140,6 +146,8 @@ public class Tool : MonoBehaviour
                                 iceCreator.SetActive(true);
                                 // set the ice creator's position to be at the point of collision
                                 iceCreator.transform.position = hit.point;
+
+                                // clear the manager's dirty chunks list
                             }
                         }
                     }
@@ -159,6 +167,7 @@ public class Tool : MonoBehaviour
                     {
                         // create ice at the ice creator
                         iceCreatorScript.iceTerrain.EditTerrain(true, iceCreator.transform.position, effectRadius, toolStrength);
+                        // clear the dirty chunks from the terrain manager
                         // set the ice creator to not be ready so a collision check must occur again for ice to be validly generated
                         iceCreatorScript.ready = false;
 

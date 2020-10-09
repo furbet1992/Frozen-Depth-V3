@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: PoisonScroll
   m_Shader: {fileID: 4800000, guid: 5f38cb0cd2ed574409f7b3bb2a55e84b, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: _SCROLLALBEDO_ON _SCROLLEMISSION_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -20,26 +20,26 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Albedo:
-        m_Texture: {fileID: 2800000, guid: ce649eb0d3e09714e90d78bfc7af5e10, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: f1eb18d7c7b5396418089191d2c355fa, type: 3}
+        m_Scale: {x: 0.012, y: 0.012}
         m_Offset: {x: 0, y: 0}
     - _Emission:
-        m_Texture: {fileID: 2800000, guid: ca923ba993d8d5241aeae51caee09154, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: eeedee33ab9883e4ea0d77fe5b62c891, type: 3}
+        m_Scale: {x: 0.012, y: 0.012}
         m_Offset: {x: 0, y: 0}
     - _MetSmoOccAlp:
-        m_Texture: {fileID: 2800000, guid: 3f04609605693a049af8909cf7b0bd79, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
-        m_Texture: {fileID: 2800000, guid: 052c0955a5dd9914f906bf75c0ed6fd8, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _ScrollAlbedo: 0
-    - _ScrollEmission: 0
+    - _ScrollAlbedo: 1
+    - _ScrollEmission: 1
     - _ScrollMetSmoOccAlp: 0
     - _ScrollNormal: 0
-    - _ScrollX: 1.54
-    - _ScrollY: 3.72
+    - _ScrollX: 0
+    - _ScrollY: 1
     m_Colors: []
