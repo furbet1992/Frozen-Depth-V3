@@ -41,7 +41,7 @@ public class FireRay : MonoBehaviour
             if (Input.GetKey(KeyCode.E))
             {
              
-                if (rayhit.collider.gameObject.name == "Artifact")
+                if (rayhit.collider.gameObject.name == "Antidote (3)")
                 {
 
                     //delete that artifact

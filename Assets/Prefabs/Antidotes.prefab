@@ -9,7 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2013451271025730017}
-  m_Layer: 0
+  - component: {fileID: 1995783827}
+  - component: {fileID: 1995783826}
+  m_Layer: 9
   m_Name: Antidotes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,6 +33,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1995783827
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6699378171362086557}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.16, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1995783826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6699378171362086557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c72a77c57f65ba499f9fd180f2dd2a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dosageAmount: 200
+  blueAntidote: {fileID: 0}
+  redAntidote: {fileID: 0}
+  yellowAntidote: {fileID: 0}
 --- !u!1 &8858431198572204923
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,7 +74,8 @@ GameObject:
   - component: {fileID: 1802050155886877377}
   - component: {fileID: 5097524112689087900}
   - component: {fileID: 4215574258923629303}
-  m_Layer: 0
+  - component: {fileID: 1995783829}
+  m_Layer: 9
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +90,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8858431198572204923}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.511, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2013451271025730017}
@@ -89,7 +121,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e29f36919ed09dd49b6b9f5bf45cc0c0, type: 2}
+  - {fileID: 2100000, guid: 6100a89a3ae50ab4c996832a7c374a0a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -124,3 +156,19 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &1995783829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8858431198572204923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c72a77c57f65ba499f9fd180f2dd2a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dosageAmount: 200
+  blueAntidote: {fileID: 0}
+  redAntidote: {fileID: 0}
+  yellowAntidote: {fileID: 0}
