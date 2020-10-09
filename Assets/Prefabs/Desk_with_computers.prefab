@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7663080279892970118}
   - component: {fileID: 1658376169224761520}
   - component: {fileID: 4917707857078946889}
+  - component: {fileID: 6333836564202828706}
   m_Layer: 0
   m_Name: Desk_with_computers
   m_TagString: Untagged
@@ -25,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6630392876545390741}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.000000104308114}
+  m_LocalRotation: {x: -0, y: -1, z: 0, w: -0.0000001872535}
   m_LocalPosition: {x: -139.65326, y: -105.57327, z: 153.86424}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
@@ -78,3 +79,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &6333836564202828706
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6630392876545390741}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9346732, y: 1.2346601, z: 2.933768}
+  m_Center: {x: 0.000000074505806, y: 0.000000029802322, z: 0}

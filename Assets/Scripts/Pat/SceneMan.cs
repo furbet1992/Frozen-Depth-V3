@@ -6,13 +6,14 @@ using UnityEngine.SceneManagement;
 public class SceneMan : MonoBehaviour
 {
     // Start is called before the first frame update
+    public int builtNumber; 
 
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene(1); 
+            SceneManager.LoadScene(builtNumber); 
         }
     }
 }

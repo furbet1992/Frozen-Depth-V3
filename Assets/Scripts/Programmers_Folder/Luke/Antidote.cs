@@ -9,6 +9,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI; 
 
 public class Antidote : MonoBehaviour
 {
@@ -18,6 +19,16 @@ public class Antidote : MonoBehaviour
     [SerializeField]
     private int dosageAmount = 0;
 
+    [SerializeField]
+    public Text blueAntidote;
+    public Text redAntidote;
+    public Text yellowAntidote;
+
+
+    public void Update()
+    {
+        blueAntidote.text = antidoteTotal.ToString(); 
+    }
     public void Collect()
     {
         antidoteTotal += dosageAmount;
