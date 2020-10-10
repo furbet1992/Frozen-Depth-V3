@@ -79,9 +79,9 @@ public class TerrainMan : MonoBehaviour
 
     [Header("Total Chunks")]
     [Tooltip("This will determine how many chunks will be spawned in each axis")]
-    [Range(1, 20)] public int terrainTotalX = 10;
-    [Range(1, 20)] public int terrainTotalY = 10;
-    [Range(1, 20)] public int terrainTotalZ = 10;
+    [Range(1, 24)] public int terrainTotalX = 10;
+    [Range(1, 24)] public int terrainTotalY = 10;
+    [Range(1, 24)] public int terrainTotalZ = 10;
 
     [Header("Single Chunk Size")]
     [Tooltip("Terrain Width: X, TerrainHeight: Y, TerrainDepth: Z")]
@@ -123,6 +123,9 @@ public class TerrainMan : MonoBehaviour
 
     void Start()
     {
+        while (terrainTotalX % 4 != 0)
+            terrainTotalX++;
+
         currentManPos = transform.position;
         chunkRenderers = new MeshRenderer[terrainTotalX * terrainTotalY * terrainTotalZ];
         centerOfMeshes = new Vector3((chunkSize * terrainTotalX) * 0.5f, (chunkSize * terrainTotalY) * 0.5f, (chunkSize * terrainTotalZ) * 0.5f) + currentManPos;
