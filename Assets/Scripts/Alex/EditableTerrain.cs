@@ -40,9 +40,9 @@ public class EditableTerrain : MonoBehaviour
     MeshCollider meshCollider;
 
     float terrainSurface = 0.5f;
-    int height = 5;
-    int width = 5;
-    int depth = 5;
+    int height = 8;
+    int width = 8;
+    int depth = 8;
 
     public floatMyGuy[,,] terrainMap;
 

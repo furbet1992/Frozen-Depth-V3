@@ -83,7 +83,7 @@ Shader "Custom/Triplanar"
         // Define this shader as a surface shader
         // Call the surf function
         // Use a Physically based Standard lighting model, enable shadows on all light types and support transparency
-        #pragma surface surf Standard fullforwardshadows alpha:fade
+        #pragma surface surf Standard fullforwardshadows alpha:fade noinstancing
 
         // Use shader model 3.0 target, to get nicer looking lighting
         #pragma target 3.0

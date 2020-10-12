@@ -63,13 +63,11 @@ public class TerrainMan : MonoBehaviour
     [Header("Prefabs")]
     [Tooltip("Prefabs required to use terrain manager")]
     [SerializeField] GameObject terrainPrefab;
-    [SerializeField] GameObject player;
 
     // This will most likely be changed as it is not optimal and can be very messy
     [Header("Optimizations")]
     [Tooltip("Variables that will greatly effect FPS")]
     public float maxDistanceFromMesh = 100;
-    bool isInDistance = false;
 
     [Header("Total Chunks")]
     [Tooltip("This will determine how many chunks will be spawned in each axis")]
@@ -87,17 +85,14 @@ public class TerrainMan : MonoBehaviour
 
     //Chunk varialbles
     MeshRenderer[] chunkRenderers;
-    Vector3 centerOfMeshes;
+    [NonSerialized] public Vector3 centerOfMeshes;
 
     // Misc variables
     int chunkRendererCount = 0;
-    int frameCount = 0;
-    int totalFramesToGenerate;
-    float timer = 0.0f;
-    bool isCreated = false, isBeingInstantiated = false;
     Vector3 currentManPos;
     int fillSpotsMatched = 0;
-    bool readFromFile = false, updateReadFile = false;
+    [NonSerialized]
+    public bool readFromFile = false, updateReadFile = false, missingAABB = false, missingCache = false, changedAABB = false;
 
     // Draw the yellow gizmo to know how large the managers are.
     void OnDrawGizmosSelected()
@@ -105,7 +100,7 @@ public class TerrainMan : MonoBehaviour
         float halfChunkSize = chunkSize - 1;
 
         Vector3 currentManPos = transform.position;
-        Vector3 scale = new Vector3((halfChunkSize - 1) * (terrainTotalX), (halfChunkSize - 1) * (terrainTotalY), (halfChunkSize - 1) * (terrainTotalZ));
+        Vector3 scale = new Vector3((halfChunkSize) * (terrainTotalX), (halfChunkSize) * (terrainTotalY), (halfChunkSize) * (terrainTotalZ));
         Vector3 centerOfMeshes = new Vector3(scale.x * 0.5f, scale.y * 0.5f, scale.z * 0.5f) + currentManPos;
         
         Gizmos.color = new Color(1, 1, 0, 0.55f);
@@ -135,10 +130,11 @@ public class TerrainMan : MonoBehaviour
                 {
                     LoadMesh(false);
 
-                    if (fillSpots.Count * 6 == fillSpotsMatched)
+                    if (fillSpots.Count * 6 == fillSpotsMatched - 3)
                         readFromFile = true;
                     else
                     {
+                        changedAABB = true;
                         SaveMesh(false);
                         updateReadFile = true;
                     }
@@ -159,19 +155,30 @@ public class TerrainMan : MonoBehaviour
 
     bool CheckIfCacheExists()
     {
-        return System.IO.File.Exists(Application.dataPath + "\\TerrainSaves\\" + gameObject.name + ".dat");
+        if (System.IO.File.Exists(Application.dataPath + "\\TerrainSaves\\" + gameObject.name + ".dat"))
+        {
+            missingCache = false;
+            return true;
+        }
+
+        missingCache = true;
+        return false;
     }
 
     bool CheckIfAABBCacheExists()
     {
-        return System.IO.File.Exists(Application.dataPath + "\\TerrainSaves\\" + gameObject.name + "AABB" + ".dat");
+        if(System.IO.File.Exists(Application.dataPath + "\\TerrainSaves\\" + gameObject.name + "AABB" + ".dat"))
+        {
+            missingAABB = false;
+            return true;
+        }
+
+        missingAABB = true;
+        return false;
     }
 
     void CreateManager()
     {
-        isBeingInstantiated = false;
-        isCreated = true;
-
         if (updateReadFile)
             SaveMesh(true);
 
@@ -225,30 +232,6 @@ public class TerrainMan : MonoBehaviour
         CreateManager();
     }
 
-    private void Update()
-    {
-        if (isInDistance == true)
-        {
-            if (Vector3.Distance(player.transform.position, centerOfMeshes) > maxDistanceFromMesh)
-            {
-                isInDistance = false;
-                for (int i = 0; i < chunkRenderers.Length; i++)
-                    chunkRenderers[i].enabled = false;
-            }
-        }
-        else if (Vector3.Distance(player.transform.position, centerOfMeshes) <= maxDistanceFromMesh)
-        {
-            if (isInDistance == false)
-            {
-                isInDistance = true;
-                for (int i = 0; i < chunkRendererCount; i++)
-                    chunkRenderers[i].enabled = true;
-            }
-
-        }
-    }
-
-
     public void SaveMesh(bool meshData)
     {
         System.IO.FileStream oFileStream = null;
@@ -279,6 +262,13 @@ public class TerrainMan : MonoBehaviour
         else
         {
             oFileStream = new System.IO.FileStream(Application.dataPath + "\\TerrainSaves\\" + gameObject.name + "AABB" + ".dat", System.IO.FileMode.Create);
+            
+            oFileStream.Write(BitConverter.GetBytes(transform.position.x), 0, BitConverter.GetBytes(transform.position.x).Length);
+            oFileStream.Write(BitConverter.GetBytes(transform.position.y), 0, BitConverter.GetBytes(transform.position.y).Length);
+            oFileStream.Write(BitConverter.GetBytes(transform.position.z), 0, BitConverter.GetBytes(transform.position.z).Length);
+
+
+
             foreach (aabb cube in fillSpots)
             {
                 // Center Pos
@@ -295,7 +285,7 @@ public class TerrainMan : MonoBehaviour
         
         oFileStream.Close();
     }
-
+    
     public bool LoadMesh(bool meshData)
     {
         if (meshData)
@@ -364,7 +354,7 @@ public class TerrainMan : MonoBehaviour
         else
         {
             System.IO.FileStream oFileStream = null;
-            oFileStream = new System.IO.FileStream(Application.dataPath + "\\TerrainSaves\\" + gameObject.name + "AABB" + ".dat", System.IO.FileMode.Open);
+            oFileStream = new System.IO.FileStream(Application.dataPath + "\\TerrainSaves\\" + gameObject.name + "AABB" + ".dat", System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.Read);
 
             int length = (int)oFileStream.Length;  // get file length
             byte[] buffer = new byte[length];      // create buffer
@@ -381,6 +371,22 @@ public class TerrainMan : MonoBehaviour
             }
 
             int offset = 0;
+
+            //Manager Pos
+            if (BitConverter.ToSingle(buffer, offset) == transform.position.x)
+                fillSpotsMatched++;
+            offset += 4;
+
+            if (BitConverter.ToSingle(buffer, offset) == transform.position.y)
+                fillSpotsMatched++;
+            offset += 4;
+
+            if (BitConverter.ToSingle(buffer, offset) == transform.position.z)
+                fillSpotsMatched++;
+            offset += 4;
+
+
+
             foreach (aabb cube in fillSpots)
             {
                 if (BitConverter.ToSingle(buffer, offset) == cube.centerPos.x)

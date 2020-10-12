@@ -11,9 +11,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using TMPro;
+using UnityEngine.Assertions.Must;
+using System.Runtime.InteropServices;
+using System;
 
 public class ManagerOfTheTerrainManagers : MonoBehaviour
 {
+    public GameObject player = null;
+
+
     [Header("Managers")]
     [Tooltip("All terrain managers")]
     public TerrainMan[] terrainMans = null;
@@ -23,6 +29,10 @@ public class ManagerOfTheTerrainManagers : MonoBehaviour
     public GameObject loadingScreen = null;
     public Slider loadingBar = null;
     public TextMeshProUGUI cachingText = null;
+    public TextMeshProUGUI missingAABBCacheText = null;
+    public TextMeshProUGUI missingMeshCacheText = null;
+    public TextMeshProUGUI changedAABBCacheText = null;
+
 
     // Start is called before the first frame update
     void Start()
@@ -43,10 +53,33 @@ public class ManagerOfTheTerrainManagers : MonoBehaviour
                 cachingText.text = "Reading From Cache (" + i + "/" + terrainMans.Length + ")...";
             }
 
+            missingAABBCacheText.gameObject.SetActive(terrainMans[i].missingAABB);
+            missingMeshCacheText.gameObject.SetActive(terrainMans[i].missingCache);
+            changedAABBCacheText.gameObject.SetActive(terrainMans[i].changedAABB);
+
             loadingBar.value = (float)(i + 1) * (1.0f / (float)terrainMans.Length);
             yield return 0;
         }
 
         loadingScreen.gameObject.SetActive(false);
     }
+
+    private void Update()
+    {
+        // Disable mesh when far away from player
+        for (int i = 0; i < terrainMans.Length; i++)
+        {
+            if(Vector3.Distance(player.transform.position, terrainMans[i].centerOfMeshes) > terrainMans[i].maxDistanceFromMesh)
+            {     
+                if (terrainMans[i].gameObject.activeSelf)
+                    terrainMans[i].gameObject.SetActive(false);
+            }
+            else
+            {
+                if (!terrainMans[i].gameObject.activeSelf)
+                    terrainMans[i].gameObject.SetActive(true);
+            }
+        }
+    }
+
 }
