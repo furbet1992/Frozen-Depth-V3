@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Assets\OBJExport\OBJExporter.cs" />
     <Compile Include="Assets\Scripts\Alex\EditableTerrain.cs" />
+    <Compile Include="Assets\Scripts\Alex\ManagerOfTheTerrainManagers.cs" />
     <Compile Include="Assets\Scripts\Alex\TerrainMan.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Pat\doorTrigger.cs" />
@@ -117,12 +118,30 @@
     <Compile Include="Assets\Scripts\Programmers_Folder\WindObject.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\WindToggle.cs" />
     <None Include="Assets\Materials\Shader\Fresnel.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\Scripts\Alex\IceSHader.shader" />
     <None Include="Assets\Materials\Shader\Triplanar.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\Materials\Shader\IceSHader (2).shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\Materials\Shader\IceSHader (1).shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\Materials\Shader\Scroll.shader" />
     <None Include="Assets\Materials\Shader\TriplanarOpaque.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/alexm/Desktop/Repos/Frozen-Depth-V3/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

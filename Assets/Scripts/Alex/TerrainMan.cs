@@ -6,15 +6,9 @@
     Last Modified: 14/09/2020
 */
 
-using System.Collections;
 using System.Collections.Generic;
-using System.Data;
 using UnityEngine;
-using UnityEditor;
 using System;
-using System.Security.AccessControl;
-using UnityEngine.UI;
-using UnityEngine.Rendering.PostProcessing;
 
 
 public class aabb
@@ -91,9 +85,6 @@ public class TerrainMan : MonoBehaviour
     [Tooltip("Changing these values will change how each chunk will be populated")]
     public List<aabb> fillSpots = new List<aabb>();
 
-    [Header("Loading Bar")]
-    public Slider slider;
-
     //Chunk varialbles
     MeshRenderer[] chunkRenderers;
     Vector3 centerOfMeshes;
@@ -121,11 +112,8 @@ public class TerrainMan : MonoBehaviour
         Gizmos.DrawCube(centerOfMeshes, scale);
     }
 
-    void Start()
+    private void Awake()
     {
-        while (terrainTotalX % 4 != 0)
-            terrainTotalX++;
-
         currentManPos = transform.position;
         chunkRenderers = new MeshRenderer[terrainTotalX * terrainTotalY * terrainTotalZ];
         centerOfMeshes = new Vector3((chunkSize * terrainTotalX) * 0.5f, (chunkSize * terrainTotalY) * 0.5f, (chunkSize * terrainTotalZ) * 0.5f) + currentManPos;
@@ -194,9 +182,22 @@ public class TerrainMan : MonoBehaviour
         RefreshAllChunks();
     }
 
-    void GenerateSomeChunks(int totalFrames)
+    public bool StartCreation()
     {
-        for (int x = (terrainTotalX / totalFrames) * frameCount; x < (terrainTotalX / totalFrames) * (frameCount + 1); x++)
+        GenerateSomeChunks();
+        if (updateReadFile)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    void GenerateSomeChunks()
+    {
+        for (int x = 0; x < terrainTotalX; x++)
         {
             terrains.Add(new List<List<EditableTerrain>>());
             terrainsOBJS.Add(new List<List<GameObject>>());
@@ -221,24 +222,11 @@ public class TerrainMan : MonoBehaviour
             }
         }
 
-        if ((terrainTotalX / totalFrames) * (frameCount + 1) == terrainTotalX)
-            CreateManager();
+        CreateManager();
     }
 
     private void Update()
     {
-        totalFramesToGenerate = terrainTotalX / 2;
-        timer += Time.deltaTime;
-        if (isBeingInstantiated && timer > 0.1f)
-        {
-            if (frameCount < totalFramesToGenerate)
-                GenerateSomeChunks(totalFramesToGenerate);
-            timer = 0.0f;
-            slider.value = (((float)totalFramesToGenerate + (float)frameCount + 1) / (float)totalFramesToGenerate - 1);
-            frameCount++;
-        }
-
-
         if (isInDistance == true)
         {
             if (Vector3.Distance(player.transform.position, centerOfMeshes) > maxDistanceFromMesh)
@@ -248,22 +236,15 @@ public class TerrainMan : MonoBehaviour
                     chunkRenderers[i].enabled = false;
             }
         }
-        else if(Vector3.Distance(player.transform.position, centerOfMeshes) <= maxDistanceFromMesh)
+        else if (Vector3.Distance(player.transform.position, centerOfMeshes) <= maxDistanceFromMesh)
         {
             if (isInDistance == false)
             {
-                if (!isCreated)
-                {
-                    isBeingInstantiated = true;
-                }
-                else
-                {
-                    isInDistance = true;
-                    for (int i = 0; i < chunkRendererCount; i++)
-                        chunkRenderers[i].enabled = true;
-                }
+                isInDistance = true;
+                for (int i = 0; i < chunkRendererCount; i++)
+                    chunkRenderers[i].enabled = true;
             }
-        
+
         }
     }
 

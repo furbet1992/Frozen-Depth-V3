@@ -29,6 +29,14 @@ public class InteractTipManager : MonoBehaviour
         // cast a ray from the center of the viewport. If it hits an object in the desired layer within range, set the display to be active
         Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 1.0f));
         RaycastHit hit;
-        display.SetActive(Physics.Raycast(ray, out hit, range) && hit.collider.gameObject.layer == LayerMask.NameToLayer(interactLayer));
+        if (Physics.Raycast(ray, out hit, range))
+        {
+            if(hit.collider.gameObject.layer == LayerMask.NameToLayer(interactLayer))
+            display.SetActive(true);
+        }
+        else
+        {
+            display.SetActive(false);
+        }
     }
 }
