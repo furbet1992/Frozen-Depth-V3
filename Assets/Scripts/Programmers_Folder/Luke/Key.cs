@@ -3,7 +3,7 @@
     Author:    Luke Lazzaro
     Summary: Adds key functionality to interactable objects
     Creation Date: 31/08/2020
-    Last Modified: 7/09/2020
+    Last Modified: 12/10/2020
 */
 
 using System.Collections;
@@ -20,7 +20,7 @@ public class Key : MonoBehaviour
         {
             Debug.Log("Collected!");
             KeyManager.Instance.keys.Add(id);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
         else
             Debug.LogError("Please enter an ID for your key!");

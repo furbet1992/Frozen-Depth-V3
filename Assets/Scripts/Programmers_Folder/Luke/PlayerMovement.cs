@@ -3,7 +3,7 @@
     Author:    Luke Lazzaro
     Summary: Adds first person movement to the player
     Creation Date: 20/07/2020
-    Last Modified: 22/09/2020
+    Last Modified: 12/10/2020
 */
 
 using System;
@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private float groundCheckRadius = 0.6f;
     [SerializeField] private float deathTimer = 1;
+    [SerializeField] private bool showDebugLogs = false;
 
     [Header("Camera")]
     [SerializeField] private GameObject playerCamera;
@@ -88,6 +89,11 @@ public class PlayerMovement : MonoBehaviour
     private void NormalMovement()
     {
         if (!canMove) return;
+
+        if (showDebugLogs)
+        {
+            Debug.Log(velocity);
+        }
 
         // Set player to Default layer
         gameObject.layer = 0;
