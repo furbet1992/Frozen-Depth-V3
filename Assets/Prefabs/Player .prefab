@@ -472,8 +472,8 @@ GameObject:
   - component: {fileID: 7163581354881247477}
   - component: {fileID: 6163833063849292863}
   - component: {fileID: 6163833063849292859}
-  - component: {fileID: 6163833063849292861}
   - component: {fileID: 8694105304621766906}
+  - component: {fileID: 5291830793386380406}
   m_Layer: 0
   m_Name: 'Player '
   m_TagString: Player
@@ -573,6 +573,7 @@ MonoBehaviour:
     m_Bits: 256
   groundCheckRadius: 0.6
   deathTimer: 1
+  showDebugLogs: 0
   playerCamera: {fileID: 7163581354517645018}
   camHeight: 3
   camCrouchHeight: 1
@@ -602,6 +603,7 @@ MonoBehaviour:
   playerCamera: {fileID: 7163581355935981631}
   artifactViewer: {fileID: 5850943975391362269}
   viewerDescription: {fileID: 0}
+  gunObject: {fileID: 0}
 --- !u!114 &6163833063849292863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -634,26 +636,6 @@ MonoBehaviour:
   meltTutorial: {fileID: 0}
   CreateTutorial: {fileID: 0}
   gunInHand: {fileID: 7949500858527060409}
---- !u!114 &6163833063849292861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7163581354881247476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f4c2f6605ab3c2498c18e0b28100630, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entrancesParent: {fileID: 0}
-  maxDistance: 50
-  distanceClose: 20
-  closeSound: {fileID: 8300000, guid: a3c3829219894c34695f437f3d1df040, type: 3}
-  distanceCloser: 10
-  closerSound: {fileID: 8300000, guid: 059f40dcbbe497d4bbd8160ccaeae2dc, type: 3}
-  distanceClosest: 5
-  closestSound: {fileID: 0}
 --- !u!114 &8694105304621766906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -671,6 +653,26 @@ MonoBehaviour:
   loop: 0
   minTime: 3
   maxTime: 10
+--- !u!114 &5291830793386380406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7163581354881247476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f4c2f6605ab3c2498c18e0b28100630, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entrancesParent: {fileID: 0}
+  maxDistance: 0
+  distanceClose: 0
+  closeSound: {fileID: 0}
+  distanceCloser: 0
+  closerSound: {fileID: 0}
+  distanceClosest: 0
+  closestSound: {fileID: 0}
 --- !u!1 &8109665352962978895
 GameObject:
   m_ObjectHideFlags: 0

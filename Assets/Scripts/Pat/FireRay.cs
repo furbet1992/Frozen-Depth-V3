@@ -9,29 +9,43 @@ public class FireRay : MonoBehaviour
     Ray ray;
     float distanceRay = 20;
 
+    //   //falling rock sounds
     public AudioSource earthQuake;
     public AudioSource smallrockSlide;
     public AudioSource largeRockSlide;
     public AudioSource gateOpening;
     public AudioSource hydraulicSound;
 
+   
     public GameObject fallingStones;
     public GameObject fallingStones2;
 
+
+    //yellow Antidote that contains a UI
+    public GameObject yellowAntidote; 
+
+    //Barrier that goes up when antidote #3 is collected. 
     public Animator activation_doorA;
     public Animator activation_doorB;
-    public Animator barrier; 
+
+    public GameObject barrier;
+    [SerializeField] private Vector3 targetPos = new Vector3();
+    [SerializeField] private float doorRisingSpeed = 10;
+    private Vector3 originalPos;
 
     //Button
     private LayerMask interactableAction;
-    public GameObject gate;
+    // public GameObject gate;
     //public Animator gate; 
-    public AudioSource button;
+    //public AudioSource button;
 
     //UI
 
 
-
+    private void Start()
+    {
+        originalPos = barrier.transform.position; 
+    }
     // Update is called once per frame
     void Update()
     {
@@ -40,6 +54,10 @@ public class FireRay : MonoBehaviour
 
             if (Input.GetKey(KeyCode.E))
             {
+                if(rayhit.collider.gameObject.name == "Antidote (1)")
+                {
+                    yellowAntidote.SetActive(true); 
+                }
              
                 if (rayhit.collider.gameObject.name == "Antidote (3)")
                 {
@@ -51,12 +69,18 @@ public class FireRay : MonoBehaviour
                     earthQuake.Play();
                     smallrockSlide.Play();
                     fallingStones.SetActive(true);
-                   // barrier.SetBool("Raise", true);
-
+                    //barrierAnim.SetBool("Raise", true);
+                    barrier.transform.position = Vector3.MoveTowards(barrier.transform.position, originalPos + targetPos, doorRisingSpeed * Time.deltaTime);
+                    //barrier.transform.position += new Vector3(0, 10, 0); 
                     StartCoroutine(nextSound());
                     //floor need to open and player falls
                 }
 
+            }
+
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                yellowAntidote.SetActive(false);
             }
 
             IEnumerator nextSound()
@@ -71,7 +95,7 @@ public class FireRay : MonoBehaviour
                 activation_doorB.SetBool("Activation_Door2", true);
 
                 // level scene
-                gate.transform.position += new Vector3(0f, 2.5f, 0f);
+                //gate.transform.position += new Vector3(0f, 2.5f, 0f);
 
             }
 
