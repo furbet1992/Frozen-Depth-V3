@@ -3,7 +3,7 @@
     Author:    Luke Lazzaro
     Summary: Enables interaction and opens artifact viewer
     Creation Date: 21/07/2020
-    Last Modified: 5/10/2020
+    Last Modified: 12/10/2020
 */
 
 using System;
@@ -19,6 +19,7 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private Transform playerCamera;
     [SerializeField] private MeshFilter artifactViewer;
     [SerializeField] private Text viewerDescription;
+    [SerializeField] private GameObject gunObject;
 
     // Used for enabling and disabling player movement
     private PlayerMovement pmScript;
@@ -64,7 +65,13 @@ public class PlayerInteract : MonoBehaviour
                 else if (antidote != null)
                 {
                     antidote.Collect();
-                }    
+                }
+                else if (hit.collider.CompareTag("gun"))
+                {
+                    gunObject.SetActive(true);
+                    toolScript.enabled = true;
+                    Destroy(hit.collider.gameObject);
+                }
                 else if (hit.collider.CompareTag("Tool Component"))
                 {
                     toolScript.canFreeze = true;
