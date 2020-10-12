@@ -46,22 +46,30 @@ public class ManagerOfTheTerrainManagers : MonoBehaviour
         {
             if (terrainMans[i].StartCreation())
             {
-                cachingText.text = "Caching current terrain (" + i + "/" + terrainMans.Length + ")...";
+                if(cachingText)
+                    cachingText.text = "Caching current terrain (" + i + "/" + terrainMans.Length + ")...";
             }
             else
             {
-                cachingText.text = "Reading From Cache (" + i + "/" + terrainMans.Length + ")...";
+                if (cachingText)
+                    cachingText.text = "Reading From Cache (" + i + "/" + terrainMans.Length + ")...";
             }
+            if (missingAABBCacheText)
+                missingAABBCacheText.gameObject.SetActive(terrainMans[i].missingAABB);
 
-            missingAABBCacheText.gameObject.SetActive(terrainMans[i].missingAABB);
-            missingMeshCacheText.gameObject.SetActive(terrainMans[i].missingCache);
-            changedAABBCacheText.gameObject.SetActive(terrainMans[i].changedAABB);
+            if (missingMeshCacheText)
+                missingMeshCacheText.gameObject.SetActive(terrainMans[i].missingCache);
+            
+            if (changedAABBCacheText)
+                changedAABBCacheText.gameObject.SetActive(terrainMans[i].changedAABB);
 
-            loadingBar.value = (float)(i + 1) * (1.0f / (float)terrainMans.Length);
+            if (loadingBar)
+                loadingBar.value = (float)(i + 1) * (1.0f / (float)terrainMans.Length);
             yield return 0;
         }
 
-        loadingScreen.gameObject.SetActive(false);
+        if (loadingScreen)
+            loadingScreen.gameObject.SetActive(false);
     }
 
     private void Update()
