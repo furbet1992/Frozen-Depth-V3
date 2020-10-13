@@ -23,6 +23,7 @@ public class PlayerInteract : MonoBehaviour
 
     [Header("Tutorials")]
     [SerializeField] private GameObject meltTutorial;
+    [SerializeField] private GameObject createTutorial;
 
     // Used for enabling and disabling player movement
     private PlayerMovement pmScript;
@@ -45,6 +46,7 @@ public class PlayerInteract : MonoBehaviour
         {
             // remove any active tutorials
             meltTutorial.SetActive(false);
+            createTutorial.SetActive(false);
 
             Vector3 camPos = playerCamera.position;
 
@@ -83,6 +85,7 @@ public class PlayerInteract : MonoBehaviour
                 {
                     toolScript.canFreeze = true;
                     hit.collider.gameObject.SetActive(false);
+                    createTutorial.SetActive(true);
                 }
             }
         }
