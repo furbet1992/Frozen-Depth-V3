@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5098407514461662452}
   - component: {fileID: 4294789313182586562}
   - component: {fileID: 7540891971346213435}
+  - component: {fileID: -4542484266592875462}
   m_Layer: 0
   m_Name: LAB_TANK
   m_TagString: Untagged
@@ -78,3 +79,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &-4542484266592875462
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8113928829182779111}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1102405, y: 0.18971208, z: 0.1275179}
+  m_Center: {x: 0, y: 0.0037887432, z: 0}
