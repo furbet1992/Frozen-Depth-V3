@@ -3,7 +3,7 @@
     Author:    Luke Lazzaro
     Summary: Does something if the player has a required key
     Creation Date: 31/08/2020
-    Last Modified: 21/09/2020
+    Last Modified: 13/10/2020
 */
 
 using System.Collections;
@@ -21,6 +21,7 @@ public class Keyhole : MonoBehaviour
     [SerializeField] private GameObject objectToOpen;
     [SerializeField] private OpenBehaviour openBehaviour = OpenBehaviour.RisingDoor;
     [SerializeField] private GameObject placeForKeyMesh;
+    [SerializeField] private Animator animatedModel;
 
     [Header("Rising Door")]
     [SerializeField] private Vector3 targetPos = new Vector3();
@@ -61,6 +62,7 @@ public class Keyhole : MonoBehaviour
         }
 
         PlaceKeyOnKeyhole();
+        animatedModel.SetTrigger("Lock In");
     }
 
     private void PlaceKeyOnKeyhole()
