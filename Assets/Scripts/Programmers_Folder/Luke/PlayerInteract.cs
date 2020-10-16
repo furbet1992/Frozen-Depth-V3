@@ -24,7 +24,7 @@ public class PlayerInteract : MonoBehaviour
     [Header("Tutorials")]
     [SerializeField] private GameObject meltTutorial;
     [SerializeField] private GameObject createTutorial;
-    [SerializeField] private GameObject yellowAntidote;
+
 
     // Used for enabling and disabling player movement
     private PlayerMovement pmScript;
@@ -87,10 +87,6 @@ public class PlayerInteract : MonoBehaviour
                     toolScript.canFreeze = true;
                     hit.collider.gameObject.SetActive(false);
                     createTutorial.SetActive(true);
-                }
-                else if(hit.collider.CompareTag("Antidote"))
-                {
-                    yellowAntidote.SetActive(true); 
                 }
             }
         }
