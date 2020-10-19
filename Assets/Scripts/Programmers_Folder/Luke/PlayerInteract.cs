@@ -3,7 +3,7 @@
     Author:    Luke Lazzaro
     Summary: Enables interaction and opens artifact viewer
     Creation Date: 21/07/2020
-    Last Modified: 13/10/2020
+    Last Modified: 19/10/2020
 */
 
 using System;
@@ -65,10 +65,6 @@ public class PlayerInteract : MonoBehaviour
                 else if (key != null)
                 {
                     key.Collect();
-                }
-                else if (keyhole != null)
-                {
-                    keyhole.Open();
                 }
                 else if (antidote != null)
                 {
