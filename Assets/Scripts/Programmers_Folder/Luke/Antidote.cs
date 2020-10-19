@@ -27,7 +27,7 @@ public class Antidote : MonoBehaviour
 
     public void Update()
     {
-        blueAntidote.text = antidoteTotal.ToString(); 
+        yellowAntidote.text = "Lives Saved:  " + antidoteTotal.ToString(); 
     }
     public void Collect()
     {
