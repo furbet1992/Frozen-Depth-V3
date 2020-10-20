@@ -22,7 +22,8 @@ public class FireRay : MonoBehaviour
 
 
     //yellow Antidote that contains a UI
-    public GameObject yellowAntidote; 
+    public GameObject yellowAntidote;
+    private bool antidoteTute; 
 
     //Barrier that goes up when antidote #3 is collected. 
     public Animator activation_doorA;
@@ -56,7 +57,8 @@ public class FireRay : MonoBehaviour
             {
                 if(rayhit.collider.gameObject.name == "Antidote (1)")
                 {
-                    yellowAntidote.SetActive(true); 
+                    yellowAntidote.SetActive(true);
+                    antidoteTute = true; 
                 }
              
                 if (rayhit.collider.gameObject.name == "Antidote (3)")
@@ -77,11 +79,14 @@ public class FireRay : MonoBehaviour
                 }
 
             }
-
-            if (Input.GetKey(KeyCode.Escape))
+            if (yellowAntidote == true)
             {
-                yellowAntidote.SetActive(false);
+                if (Input.GetKey(KeyCode.E))
+                {
+                    yellowAntidote.SetActive(false);
+                }
             }
+
 
             IEnumerator nextSound()
             {

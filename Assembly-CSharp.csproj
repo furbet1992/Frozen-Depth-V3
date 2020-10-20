@@ -147,9 +147,6 @@
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/project $$/school/Projects/Frozen Depth/Frozen-Depth-V3/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.ProGrids">
-      <HintPath>D:/project $$/school/Projects/Frozen Depth/Frozen-Depth-V3/Library/ScriptAssemblies/Unity.ProGrids.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>D:/project $$/school/Projects/Frozen Depth/Frozen-Depth-V3/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
@@ -164,9 +161,6 @@
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
       <HintPath>D:/project $$/school/Projects/Frozen Depth/Frozen-Depth-V3/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ProGrids.Editor">
-      <HintPath>D:/project $$/school/Projects/Frozen Depth/Frozen-Depth-V3/Library/ScriptAssemblies/Unity.ProGrids.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/project $$/school/Projects/Frozen Depth/Frozen-Depth-V3/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
