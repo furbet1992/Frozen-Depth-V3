@@ -3,7 +3,7 @@
     Author:    Luke Lazzaro
     Summary: Enables interaction and opens artifact viewer
     Creation Date: 21/07/2020
-    Last Modified: 13/10/2020
+    Last Modified: 20/10/2020
 */
 
 using System;
@@ -20,11 +20,11 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private MeshFilter artifactViewer;
     [SerializeField] private Text viewerDescription;
     [SerializeField] private GameObject gunObject;
+    [SerializeField] private GameObject freezerAttachment;
 
     [Header("Tutorials")]
     [SerializeField] private GameObject meltTutorial;
     [SerializeField] private GameObject createTutorial;
-
 
     // Used for enabling and disabling player movement
     private PlayerMovement pmScript;
@@ -69,7 +69,8 @@ public class PlayerInteract : MonoBehaviour
                 }
                 else if (keyhole != null)
                 {
-                    keyhole.Open();
+                    keyhole.animatedModel.SetTrigger("Lock In");
+                    keyhole.PlaceKeyOnKeyhole();
                 }
                 else if (antidote != null)
                 {
@@ -87,6 +88,7 @@ public class PlayerInteract : MonoBehaviour
                     toolScript.canFreeze = true;
                     hit.collider.gameObject.SetActive(false);
                     createTutorial.SetActive(true);
+                    freezerAttachment.SetActive(true); 
                 }
             }
         }
