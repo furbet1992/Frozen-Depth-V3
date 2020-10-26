@@ -40,6 +40,6 @@ Material:
     - _ScrollEmission: 1
     - _ScrollMetSmoOccAlp: 0
     - _ScrollNormal: 0
-    - _ScrollX: -1
-    - _ScrollY: -3
+    - _ScrollX: 0.15
+    - _ScrollY: 0.15
     m_Colors: []

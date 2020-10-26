@@ -21,11 +21,11 @@ Material:
     m_TexEnvs:
     - _Albedo:
         m_Texture: {fileID: 2800000, guid: f1eb18d7c7b5396418089191d2c355fa, type: 3}
-        m_Scale: {x: 0.012, y: 0.012}
+        m_Scale: {x: 0.3, y: 0.3}
         m_Offset: {x: 0, y: 0}
     - _Emission:
         m_Texture: {fileID: 2800000, guid: eeedee33ab9883e4ea0d77fe5b62c891, type: 3}
-        m_Scale: {x: 0.012, y: 0.012}
+        m_Scale: {x: 0.07, y: 0.3}
         m_Offset: {x: 0, y: 0}
     - _MetSmoOccAlp:
         m_Texture: {fileID: 0}
@@ -33,7 +33,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _Normal:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _ScrollAlbedo: 1
@@ -41,5 +41,5 @@ Material:
     - _ScrollMetSmoOccAlp: 0
     - _ScrollNormal: 0
     - _ScrollX: 0
-    - _ScrollY: 1
+    - _ScrollY: 0.1
     m_Colors: []
