@@ -20,10 +20,10 @@ public class FireRay : MonoBehaviour
     public GameObject fallingStones;
     public GameObject fallingStones2;
 
+    public GameObject leftDoor;
+    public GameObject rightDoor;
+    public  bool doorOpening=false;
 
-    //yellow Antidote that contains a UI
-    public GameObject yellowAntidote;
-    private bool antidoteTute; 
 
     //Barrier that goes up when antidote #3 is collected. 
     public Animator activation_doorA;
@@ -36,8 +36,8 @@ public class FireRay : MonoBehaviour
 
     //Button
     private LayerMask interactableAction;
-    // public GameObject gate;
-    //public Animator gate; 
+    //public GameObject gate;
+    //public Animator gate;
     //public AudioSource button;
 
     //UI
@@ -45,7 +45,7 @@ public class FireRay : MonoBehaviour
 
     private void Start()
     {
-        originalPos = barrier.transform.position; 
+        originalPos = barrier.transform.position;
     }
     // Update is called once per frame
     void Update()
@@ -55,37 +55,30 @@ public class FireRay : MonoBehaviour
 
             if (Input.GetKey(KeyCode.E))
             {
-                if(rayhit.collider.gameObject.name == "Antidote (1)")
-                {
-                    yellowAntidote.SetActive(true);
-                    antidoteTute = true; 
-                }
-             
                 if (rayhit.collider.gameObject.name == "Antidote (3)")
                 {
-
+                    
                     //delete that artifact
                     Destroy(rayhit.collider.gameObject);
+
+                    //play narrative here
+                    // "Woo I got the antidote!"
+
+
 
                     //play sound of earthquake
                     earthQuake.Play();
                     smallrockSlide.Play();
                     fallingStones.SetActive(true);
-                    //barrierAnim.SetBool("Raise", true);
                     barrier.transform.position = Vector3.MoveTowards(barrier.transform.position, originalPos + targetPos, doorRisingSpeed * Time.deltaTime);
-                    //barrier.transform.position += new Vector3(0, 10, 0); 
+                    doorOpening = true; 
                     StartCoroutine(nextSound());
                     //floor need to open and player falls
                 }
 
             }
-            if (yellowAntidote == true)
-            {
-                if (Input.GetKey(KeyCode.E))
-                {
-                    yellowAntidote.SetActive(false);
-                }
-            }
+
+        }
 
 
             IEnumerator nextSound()
@@ -96,17 +89,18 @@ public class FireRay : MonoBehaviour
                 //the floor gates to open
                 gateOpening.Play();
                 hydraulicSound.Play();
+
                 activation_doorA.SetBool("Activate_Door", true);
                 activation_doorB.SetBool("Activation_Door2", true);
 
-                // level scene
-                //gate.transform.position += new Vector3(0f, 2.5f, 0f);
+            // level scene
+            //gate.transform.position += new Vector3(0f, 2.5f, 0f);
 
-            }
+        }
 
             Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * distanceRay);
 
         }
     }
-}
+
 

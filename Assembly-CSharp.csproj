@@ -68,7 +68,6 @@
     <Compile Include="Assets\Scripts\Alex\ManagerOfTheTerrainManagers.cs" />
     <Compile Include="Assets\Scripts\Alex\TerrainMan.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\Pat\doorTrigger.cs" />
     <Compile Include="Assets\Scripts\Pat\EnergySource.cs" />
     <Compile Include="Assets\Scripts\Pat\FallingStalactites.cs" />
     <Compile Include="Assets\Scripts\Pat\FireRay.cs" />
@@ -82,7 +81,6 @@
     <Compile Include="Assets\Scripts\Pat\startLevel.cs" />
     <Compile Include="Assets\Scripts\Pat\TriggleToggle.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\ChangePlayerGravity.cs" />
-    <Compile Include="Assets\Scripts\Programmers_Folder\FadeToBlack.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\Luke\Antidote.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\Luke\DeathTrigger.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\Luke\DetectorLight.cs" />
@@ -100,12 +98,14 @@
     <Compile Include="Assets\Scripts\Programmers_Folder\Michael\AmbientSoundManager.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\Michael\AntidoteMenuHider.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\Michael\BlueIce.cs" />
+    <Compile Include="Assets\Scripts\Programmers_Folder\Michael\FadeScreen.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\Michael\FuelBar.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\Michael\IceCreator.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\Michael\InteractTipManager.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\Michael\RandomAudio.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\Michael\RegionLoader.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\Michael\RegionManager.cs" />
+    <Compile Include="Assets\Scripts\Programmers_Folder\Michael\Screen.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\Michael\Tool.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\RockFallTrigger.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\Save Scripts\ArtifactDisplay.cs" />
