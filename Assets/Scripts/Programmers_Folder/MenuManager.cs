@@ -320,7 +320,7 @@ public class MenuManager : MonoBehaviour
     public void FullScreen()
     {
         // set the game to play in fullscreen if the toggle is on, windowed otherwise
-        Screen.fullScreen = fullScreenToggle.isOn;
+        UnityEngine.Screen.fullScreen = fullScreenToggle.isOn;
     }
 
     private void LateUpdate()
