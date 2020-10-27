@@ -11,7 +11,7 @@ Material:
   m_Shader: {fileID: 4800000, guid: 6272e7523ee014a4ca698e94055497bd, type: 3}
   m_ShaderKeywords: _APPLYTOALPHA_ON _APPLYTOEMISSION_ON
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
+  m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -41,24 +41,24 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _FrontAlbedo:
         m_Texture: {fileID: 2800000, guid: 34f56400d5d7cfc449c101bec31b741a, type: 3}
-        m_Scale: {x: 0.1, y: 0.1}
+        m_Scale: {x: 0.05, y: 0.05}
         m_Offset: {x: 5, y: 5}
     - _FrontEmission:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 0.1, y: 0.1}
-        m_Offset: {x: 5, y: 5}
+        m_Texture: {fileID: 2800000, guid: a809061c5a545724a8092479d4fb8673, type: 3}
+        m_Scale: {x: 0.01, y: 0.01}
+        m_Offset: {x: 0, y: 0}
     - _FrontMetSmoOcc:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FrontMetSmoOccAlp:
-        m_Texture: {fileID: 2800000, guid: c8c82329f014f63459962d34cb4a8058, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: e1defc500733e3342a63aaa9dddeaacf, type: 3}
+        m_Scale: {x: 0.1, y: 0.1}
         m_Offset: {x: 0, y: 0}
     - _FrontNormal:
         m_Texture: {fileID: 2800000, guid: 052c0955a5dd9914f906bf75c0ed6fd8, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 5, y: 5}
+        m_Scale: {x: 0.05, y: 0.05}
+        m_Offset: {x: 0, y: 0}
     - _FrontTexture:
         m_Texture: {fileID: 2800000, guid: ecfd40e90bb990048957747798c2c7af, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -85,24 +85,24 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _RightAlbedo:
         m_Texture: {fileID: 2800000, guid: 34f56400d5d7cfc449c101bec31b741a, type: 3}
-        m_Scale: {x: 0.1, y: 0.1}
+        m_Scale: {x: 0.05, y: 0.05}
         m_Offset: {x: 1, y: 1}
     - _RightEmission:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 0.1, y: 0.1}
-        m_Offset: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: a809061c5a545724a8092479d4fb8673, type: 3}
+        m_Scale: {x: 0.01, y: 0.01}
+        m_Offset: {x: 0, y: 0}
     - _RightMetSmoOcc:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RightMetSmoOccAlp:
-        m_Texture: {fileID: 2800000, guid: c8c82329f014f63459962d34cb4a8058, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: e1defc500733e3342a63aaa9dddeaacf, type: 3}
+        m_Scale: {x: 0.1, y: 0.1}
         m_Offset: {x: 0, y: 0}
     - _RightNormal:
         m_Texture: {fileID: 2800000, guid: 052c0955a5dd9914f906bf75c0ed6fd8, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 5, y: 5}
+        m_Scale: {x: 0.5, y: 0.05}
+        m_Offset: {x: 0, y: 0}
     - _RightTexture:
         m_Texture: {fileID: 2800000, guid: 61fa497d5718e0446a824460bad83b78, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -117,31 +117,31 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _TopAlbedo:
         m_Texture: {fileID: 2800000, guid: 34f56400d5d7cfc449c101bec31b741a, type: 3}
-        m_Scale: {x: 0.1, y: 0.1}
-        m_Offset: {x: 10, y: 10}
+        m_Scale: {x: 0.05, y: 0.05}
+        m_Offset: {x: 10.15, y: 10}
     - _TopEmission:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 0.1, y: 0.1}
-        m_Offset: {x: 10, y: 10}
+        m_Texture: {fileID: 2800000, guid: a809061c5a545724a8092479d4fb8673, type: 3}
+        m_Scale: {x: 0.01, y: 0.01}
+        m_Offset: {x: 0, y: 0}
     - _TopMetSmoOcc:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TopMetSmoOccAlp:
-        m_Texture: {fileID: 2800000, guid: 34f56400d5d7cfc449c101bec31b741a, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: e1defc500733e3342a63aaa9dddeaacf, type: 3}
+        m_Scale: {x: 0.1, y: 0.1}
         m_Offset: {x: 0, y: 0}
     - _TopNormal:
         m_Texture: {fileID: 2800000, guid: 052c0955a5dd9914f906bf75c0ed6fd8, type: 3}
-        m_Scale: {x: 0.1, y: 0.1}
-        m_Offset: {x: 10, y: 10}
+        m_Scale: {x: 0.5, y: 0.05}
+        m_Offset: {x: 0, y: 0}
     - _TopTexture:
         m_Texture: {fileID: 2800000, guid: 61fa497d5718e0446a824460bad83b78, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Alpha: 0.791
-    - _AlphaFresnelExponent: 35
+    - _AlphaFresnelExponent: 53
     - _ApplyToAlpha: 1
     - _ApplyToEmission: 1
     - _BlueMulti: 0.2
@@ -149,13 +149,13 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _EmissionFresnelExponent: 10
+    - _EmissionFresnelExponent: 0.84
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
-    - _NormalMapIntensity: 2
+    - _NormalMapIntensity: 112.48
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
@@ -168,4 +168,4 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _EmissionFresnelColor: {r: 0.21226418, g: 0.5984093, b: 1, a: 1}
+    - _EmissionFresnelColor: {r: 0.12135102, g: 0.5475004, b: 0.9528302, a: 0.4}
