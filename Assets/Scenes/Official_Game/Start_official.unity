@@ -398,6 +398,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayButton
       objectReference: {fileID: 0}
+    - target: {fileID: 7663544259263619724, guid: 5456e76dd6e2ece47a31f5b11292fcd3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1192344000}
+    - target: {fileID: 7663544259263619724, guid: 5456e76dd6e2ece47a31f5b11292fcd3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SettingsButton
+      objectReference: {fileID: 0}
     - target: {fileID: 7663544259403626485, guid: 5456e76dd6e2ece47a31f5b11292fcd3,
         type: 3}
       propertyPath: m_IsActive
@@ -413,6 +423,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SettingsButton
       objectReference: {fileID: 0}
+    - target: {fileID: 7663544259658009697, guid: 5456e76dd6e2ece47a31f5b11292fcd3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1192344000}
+    - target: {fileID: 7663544259658009697, guid: 5456e76dd6e2ece47a31f5b11292fcd3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663544259784534822, guid: 5456e76dd6e2ece47a31f5b11292fcd3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1192344000}
+    - target: {fileID: 7663544259784534822, guid: 5456e76dd6e2ece47a31f5b11292fcd3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackToMainMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 7663544259832043898, guid: 5456e76dd6e2ece47a31f5b11292fcd3,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -422,6 +452,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: QuitButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663544260433184985, guid: 5456e76dd6e2ece47a31f5b11292fcd3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1192344000}
+    - target: {fileID: 7663544260433184985, guid: 5456e76dd6e2ece47a31f5b11292fcd3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackToGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663544260527023644, guid: 5456e76dd6e2ece47a31f5b11292fcd3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1192344000}
+    - target: {fileID: 7663544260527023644, guid: 5456e76dd6e2ece47a31f5b11292fcd3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackToCheckpoint
       objectReference: {fileID: 0}
     - target: {fileID: 7663544260536135688, guid: 5456e76dd6e2ece47a31f5b11292fcd3,
         type: 3}
@@ -29183,6 +29233,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f00f3c4dd19886489a47ecb991cb598, type: 3}
+--- !u!1 &404612497 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8905605582049732857, guid: 5f00f3c4dd19886489a47ecb991cb598,
+    type: 3}
+  m_PrefabInstance: {fileID: 404612496}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &405037279
 GameObject:
   m_ObjectHideFlags: 0
@@ -34283,7 +34339,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 431787417}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.9, y: 82.2, z: -2.6}
+  m_LocalPosition: {x: 9.1, y: 82.2, z: -2.6}
   m_LocalScale: {x: 30, y: 3, z: 30}
   m_Children: []
   m_Father: {fileID: 1138231831}
@@ -44986,12 +45042,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 867284111}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c89db016d22d6ef4b847461e70fffd19, type: 3}
+  m_Script: {fileID: 11500000, guid: 38129cd913031d64c80acb4d8a95199f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blackScreen: {fileID: 1800593380}
-  duration: 0.2
-  transparent: 1
+  screen: {fileID: 1800593383}
+  duration: 0.91
+  makeOpaque: 1
+  destroyAfterTrigger: 0
 --- !u!65 &867284113
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -53297,6 +53354,7 @@ MonoBehaviour:
   inGameUI: {fileID: 626955023}
   settingsUI: {fileID: 1132043453}
   player: {fileID: 6163833064370884304}
+  viewerRotate: {fileID: 2091652815}
   masterVolumeSlider: {fileID: 436307074}
   masterVolumeValueText: {fileID: 756192751}
   musicVolumeSlider: {fileID: 2036065057}
@@ -53721,7 +53779,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh22110
+  m_Name: pb_Mesh197110
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -65348,6 +65406,7 @@ GameObject:
   - component: {fileID: 1800593382}
   - component: {fileID: 1800593381}
   - component: {fileID: 1800593380}
+  - component: {fileID: 1800593383}
   m_Layer: 5
   m_Name: FadeToBlack
   m_TagString: Untagged
@@ -65368,7 +65427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.0627451}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -65408,8 +65467,20 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1000, y: 700}
+  m_SizeDelta: {x: 1500, y: 1500}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1800593383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800593379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e8e92a091c05e04f8ceb6df599d94a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1809472841 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 4dc587551dfddd24c8e6c5fd70019709,
@@ -66271,7 +66342,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh87026
+  m_Name: pb_Mesh1209726
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -72778,6 +72849,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6163833063934573999}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2091652815 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7950692965376389900, guid: 6643ab6e28461494182499c05f60bb07,
+    type: 3}
+  m_PrefabInstance: {fileID: 6163833063934573999}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091652813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a54e1b29dd0fc2a4cae4b12b0ee212fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &2091652817 stripped
 MeshFilter:
   m_CorrespondingSourceObject: {fileID: 3627822956843231062, guid: 6643ab6e28461494182499c05f60bb07,
@@ -73478,8 +73561,8 @@ MonoBehaviour:
   activation_doorA: {fileID: 1307758647}
   activation_doorB: {fileID: 1120528800}
   barrier: {fileID: 1379501462}
-  targetPos: {x: 0, y: 300, z: 0}
-  doorRisingSpeed: 300
+  targetPos: {x: 0, y: 500, z: 0}
+  doorRisingSpeed: 600
 --- !u!1 &6163833064370884304
 GameObject:
   m_ObjectHideFlags: 0
@@ -73552,23 +73635,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  crouchSpeed: 4
-  gravity: -150
-  jumpHeight: 4
+  crouchSpeed: 6
+  gravity: -70
+  jumpHeight: 3
   groundCheck: {fileID: 6163833063972493650}
   groundMask:
     serializedVersion: 2
     m_Bits: 256
-  groundCheckRadius: 0.6
-  deathTimer: 1
-  showDebugLogs: 0
+  groundCheckRadius: 0.5
+  deathTimer: 1.5
   playerCamera: {fileID: 6163833064801591550}
-  camHeight: 2
+  camHeight: 3
   camCrouchHeight: 1
   ccHeight: 3
-  ccCrouchHeight: 0.2
-  deathVelocity: -100
-  deathUI: {fileID: 0}
+  ccCrouchHeight: 1
+  deathUI: {fileID: 404612497}
   godMode: 0
   flySpeed: 20
   willDie: 0
@@ -73614,21 +73695,27 @@ MonoBehaviour:
   tickRate: 0
   canFreeze: 0
   iceCreator: {fileID: 0}
-  iceCreatorScript: {fileID: 0}
+  iceCreatorRelativeSize: 1
+  iceCreatorMoveSpeed: 0.1
   FuelGainRate: 100
   FuelLossRate: 100
   capacity: 1000
-  toolStrength: 0.4
-  toolStrengthChangeRate: 100
-  maxToolStrength: 50
-  minToolStrength: 6
+  freezeStrength: 0.1
+  meltStrength: 0.1
   toolFuel: 0
   playerCamera: {fileID: 66599222027170412}
-  laser: {fileID: 0}
   tool: {fileID: 0}
-  laserStartPoint: {fileID: 0}
-  burnLaserMaterial: {fileID: 0}
-  freezeLaserMaterial: {fileID: 0}
+  meltLaserObject: {fileID: 0}
+  meltLaserStartPoint: {fileID: 0}
+  freezeLaserObject: {fileID: 0}
+  freezeLaserStartPoint: {fileID: 0}
+  crosshair: {fileID: 0}
+  steamParticleEmitter: {fileID: 0}
+  sleetParticleEmitter: {fileID: 0}
+  mistParticleEmitter: {fileID: 0}
+  steamParticleCount: 4
+  sleetParticleCount: 4
+  mistParticleCount: 4
 --- !u!4 &6163833064370884311
 Transform:
   m_ObjectHideFlags: 0
@@ -73658,8 +73745,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d1efbc6089d3734982ecf8d26e8d714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 100
+  mouseSensitivity: 60
   playerBody: {fileID: 6163833064370884311}
+  amplitude: 0.03
+  frequency: 0.2
 --- !u!1 &6163833064801591550
 GameObject:
   m_ObjectHideFlags: 0

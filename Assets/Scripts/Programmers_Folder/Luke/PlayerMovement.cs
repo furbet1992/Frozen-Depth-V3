@@ -3,7 +3,7 @@
     Author:    Luke Lazzaro
     Summary: Adds first person movement to the player
     Creation Date: 20/07/2020
-    Last Modified: 12/10/2020
+    Last Modified: 28/10/2020
 */
 
 using System;
@@ -22,9 +22,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [Tooltip("The layer for all objects you can walk on.")]
     [SerializeField] private LayerMask groundMask;
-    [SerializeField] private float groundCheckRadius = 0.6f;
+    [SerializeField] private float groundCheckRadius = 0.5f;
     [SerializeField] private float deathTimer = 1;
-    [SerializeField] private bool showDebugLogs = false;
 
     [Header("Camera")]
     [SerializeField] private GameObject playerCamera;
@@ -34,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Char. Controller")]
     [SerializeField] private float ccHeight = 3;
     [SerializeField] private float ccCrouchHeight = 2;
-    [SerializeField] private float deathVelocity = -20;
+    //[SerializeField] private float deathVelocity = -20;
     [SerializeField] private GameObject deathUI;
 
     [Space(10)]
@@ -47,9 +46,11 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController controller;
     
     private Vector3 velocity;
-    private bool isGrounded;
-    private bool isCrouching = true;
+    private Vector3 move;
+    private bool isGrounded = false;
+    private bool isCrouching = false;
     private Vector3 originalPos;
+    private Quaternion originalRot;
 
     // used to store the distance between controller.center and the halfway point on the collider
     private float standCenterHeight = 0f;
@@ -57,17 +58,26 @@ public class PlayerMovement : MonoBehaviour
     private float currentDeathTimer = 0;
     private bool canMove = true;
 
+    public Vector3 GetMoveVector() { return move; }
+    public bool GetGrounded() { return isGrounded; }
+
     private void Start()
     {
         currentDeathTimer = deathTimer;
+
         originalPos = transform.position;
+        originalRot = transform.rotation;
+
         controller = GetComponent<CharacterController>();
         standCenterHeight = (ccHeight - ccCrouchHeight) * 0.5f;
-        Crouch();
+
+        SyncControllerProperties();
     }
 
     private void Update()
     {
+        isGrounded = false;
+
         if (godMode)
             GodModeMovement();
         else
@@ -90,22 +100,22 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!canMove) return;
 
-        if (showDebugLogs)
-        {
-            Debug.Log(velocity);
-        }
-
         // Set player to Default layer
         gameObject.layer = 0;
 
-        Vector3 temp = new Vector3(controller.center.x, controller.height - controller.center.y, controller.center.z);
-
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundMask);
-
-        if (isGrounded && velocity.y < deathVelocity)
+        Collider[] objectsHit = Physics.OverlapSphere(groundCheck.position, groundCheckRadius);
+        foreach (Collider c in objectsHit)
         {
-            Die();
+            if (c.transform.root != transform)
+            {
+                isGrounded = true;
+            }
         }
+
+        //if (isGrounded && velocity.y < deathVelocity)
+        //{
+        //    Die();
+        //}
 
         if (isGrounded && velocity.y < 0)
         {
@@ -115,7 +125,7 @@ public class PlayerMovement : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        Vector3 move = transform.right * x + transform.forward * z;
+        move = transform.right * x + transform.forward * z;
 
         if (isCrouching)
             controller.Move(move * crouchSpeed * Time.deltaTime);
@@ -181,8 +191,50 @@ public class PlayerMovement : MonoBehaviour
                 return;
         }
 
-        isCrouching = !isCrouching;        
+        isCrouching = !isCrouching;
 
+        SyncControllerProperties();
+
+        Debug.Log("isGrounded: " + isGrounded);
+    }
+
+    // Call this in LateUpdate, otherwise the position will be overwritten by player movement.
+    private void GoToLastCheckpoint()
+    {
+        if (CheckpointManager.currentCheckpoint != null)
+        {
+            transform.position = CheckpointManager.currentCheckpoint.transform.position;
+            transform.rotation = CheckpointManager.currentCheckpoint.transform.rotation;
+        }
+        else
+        {
+            transform.position = originalPos;
+            transform.rotation = originalRot;
+        }
+    }
+
+    public void Die()
+    {
+        willDie = true;
+        deathUI.SetActive(true);
+        canMove = false;
+        playerCamera.GetComponent<MouseLook>().enabled = false;
+    }
+
+    private void Respawn()
+    {
+        velocity = Vector3.zero;
+        GoToLastCheckpoint();
+        deathUI.SetActive(false);
+        willDie = false;
+        currentDeathTimer = deathTimer;
+        canMove = true;
+        playerCamera.GetComponent<MouseLook>().enabled = true;
+    }
+
+    // Overrides any properties currently set on the character controller with the properties set on this script
+    private void SyncControllerProperties()
+    {
         if (isCrouching)
         {
             controller.height = ccCrouchHeight;
@@ -212,35 +264,9 @@ public class PlayerMovement : MonoBehaviour
         groundCheck.localPosition = newPos;
     }
 
-    // Call this in LateUpdate, otherwise the position will be overwritten by player movement.
-    private void GoToLastCheckpoint()
+    private void OnDrawGizmos()
     {
-        if (CheckpointManager.currentCheckpoint != null)
-        {
-            transform.position = CheckpointManager.currentCheckpoint.transform.position;
-        }
-        else
-        {
-            transform.position = originalPos;
-        }
-    }
-
-    public void Die()
-    {
-        willDie = true;
-        deathUI.SetActive(true);
-        canMove = false;
-        playerCamera.GetComponent<MouseLook>().enabled = false;
-    }
-
-    private void Respawn()
-    {
-        velocity = Vector3.zero;
-        GoToLastCheckpoint();
-        deathUI.SetActive(false);
-        willDie = false;
-        currentDeathTimer = deathTimer;
-        canMove = true;
-        playerCamera.GetComponent<MouseLook>().enabled = true;
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(groundCheck.position, groundCheckRadius);
     }
 }

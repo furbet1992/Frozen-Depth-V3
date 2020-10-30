@@ -3,7 +3,7 @@
     Author: Michael Sweetman
     Summary: Manages events triggered by clicking UI buttons such as switching between UIs and exiting the game.
     Creation Date: 29/07/2020
-    Last Modified: 12/10/2020
+    Last Modified: 26/10/2020
 */
 
 using System.Collections;
@@ -25,6 +25,7 @@ public class MenuManager : MonoBehaviour
 
     [Header("Player")]
     [SerializeField] GameObject player;
+    [SerializeField] ViewerRotate viewerRotate;
 
     [Header("Settings")]
     [SerializeField] Slider masterVolumeSlider;
@@ -60,10 +61,10 @@ public class MenuManager : MonoBehaviour
     GameObject[] UIs;
     bool willGoBackToCheckpoint = false;
 
-    float masterVolume = 10.0f;
-    float musicVolume = 10.0f;
-    float dialogueVolume = 10.0f;
-    float soundEffectVolume = 10.0f;
+    float masterVolume = 1.0f;
+    float musicVolume = 1.0f;
+    float dialogueVolume = 1.0f;
+    float soundEffectVolume = 1.0f;
 
     void Start()
     {
@@ -249,7 +250,7 @@ public class MenuManager : MonoBehaviour
         masterVolumeValueText.text = masterVolumeSlider.value.ToString();
         // store the new master volume value within the range of 0 to 1
         masterVolume = masterVolumeSlider.value * 0.1f;
-
+        // set the audio listener's volume to be the master volume
         AudioListener.volume = masterVolume;
     }
 
@@ -305,6 +306,8 @@ public class MenuManager : MonoBehaviour
         sensitivityValueText.text = sensitivitySlider.value.ToString("F1");
         // set the mouse sensitivity to the value of the slider
         mouseLook.mouseSensitivity = sensitivitySlider.value;
+        // set the vieweer rotate sensitivity to the value of the slider
+        viewerRotate.mouseSensitivity = sensitivitySlider.value;
     }
 
     // triggers when the value of the field of view slider changes
@@ -319,8 +322,8 @@ public class MenuManager : MonoBehaviour
     // triggers when the fullscreen toggle is clicked
     public void FullScreen()
     {
-        // set the game to play in fullscreen if the toggle is on, windowed otherwise
-        UnityEngine.Screen.fullScreen = fullScreenToggle.isOn;
+		// set the game to play in fullscreen if the toggle is on, windowed otherwise
+		UnityEngine.Screen.fullScreen = fullScreenToggle.isOn;
     }
 
     private void LateUpdate()
