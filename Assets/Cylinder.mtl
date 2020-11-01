@@ -1,0 +1,8 @@
+newmtl Metal_Pattern_minicave
+map_Kd D:/project $$/school/Projects/Frozen Depth/Frozen-Depth-V3/Assets/Materials/Texture/metallic_pattern/metal_pattern_basecolor.tga
+map_Pm D:/project $$/school/Projects/Frozen Depth/Frozen-Depth-V3/Assets/Materials/Texture/metallic_pattern/metal_pattern_metallic.tga
+bump D:/project $$/school/Projects/Frozen Depth/Frozen-Depth-V3/Assets/Materials/Texture/metallic_pattern/metal_pattern_normal.tga
+disp D:/project $$/school/Projects/Frozen Depth/Frozen-Depth-V3/Assets/Materials/Texture/metallic_pattern/metal_pattern_height.tga
+Kd 0.2716714 0.3490566 0.3421129
+d 1
+
