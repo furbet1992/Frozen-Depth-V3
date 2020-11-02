@@ -1,9 +1,9 @@
-﻿/*
+/*
     File name: MouseLook.cs
     Author:    Luke Lazzaro
     Summary: Rotates a first person camera with the mouse
     Creation Date: 20/07/2020
-    Last Modified: 27/10/2020
+    Last Modified: 2/11/2020
 */
 
 using System.Collections;
@@ -33,10 +33,8 @@ public class MouseLook : MonoBehaviour
         PlayerMovement pm = playerBody.GetComponent<PlayerMovement>();
         Vector3 playerMove = pm.GetMoveVector();
 
-        Debug.Log(pm.GetGrounded());
         if (Vector3.Magnitude(playerMove) > 0.1f && pm.GetGrounded())
         {
-            Debug.Log("Sine wave running");
             float newY = transform.position.y + Mathf.Sin(frequency * sinCounter) * amplitude;
             transform.position = new Vector3(transform.position.x, newY, transform.position.z);
             sinCounter++;
