@@ -3,7 +3,7 @@
     Author:    Luke Lazzaro
     Summary: Enables interaction and opens artifact viewer
     Creation Date: 21/07/2020
-    Last Modified: 20/10/2020
+    Last Modified: 2/11/2020
 */
 
 using System;
@@ -69,7 +69,6 @@ public class PlayerInteract : MonoBehaviour
                 }
                 else if (keyhole != null)
                 {
-                    keyhole.animatedModel.SetTrigger("Lock In");
                     keyhole.PlaceKeyOnKeyhole();
                 }
                 else if (antidote != null)

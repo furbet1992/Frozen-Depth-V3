@@ -3,7 +3,7 @@
     Author:    Luke Lazzaro
     Summary: Does something if the player has a required key
     Creation Date: 31/08/2020
-    Last Modified: 19/10/2020
+    Last Modified: 2/11/2020
 */
 
 using System.Collections;
@@ -58,6 +58,14 @@ public class Keyhole : MonoBehaviour
 
     public void PlaceKeyOnKeyhole()
     {
+        if (!KeyManager.Instance.keys.Contains(id))
+        {
+            Debug.LogError("No key matches this keyhole.");
+            return;
+        }
+
+        animatedModel.SetTrigger("Lock In");
+
         foreach (KeyLookup item in KeyManager.Instance.keyLookup)
         {
             if (id == item.keyId)

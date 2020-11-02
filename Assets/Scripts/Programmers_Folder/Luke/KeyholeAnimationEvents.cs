@@ -3,7 +3,7 @@
     Author:    Luke Lazzaro
     Summary: Small script that lets the keyhole's animator send animation events
     Creation Date: 21/07/2020
-    Last Modified: 20/10/2020
+    Last Modified: 2/11/2020
 */
 
 using System.Collections;
@@ -17,12 +17,6 @@ public class KeyholeAnimationEvents : MonoBehaviour
         Keyhole keyhole = transform.parent.gameObject.GetComponent<Keyhole>();
         if (keyhole != null)
         {
-            if (!KeyManager.Instance.keys.Contains(keyhole.id))
-            {
-                Debug.LogError("No key matches this keyhole.");
-                return;
-            }
-
             keyhole.Open();
         }
         else
