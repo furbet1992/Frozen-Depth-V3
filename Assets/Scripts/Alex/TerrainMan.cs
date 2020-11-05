@@ -94,8 +94,9 @@ public class TerrainMan : MonoBehaviour
     private Vector3 currentManPos;
     private int fillSpotsMatched = 0;
 
-    [NonSerialized]
-    public bool readFromFile = false, updateReadFile = false, missingAABB = false, missingCache = false, changedAABB = false;
+    [NonSerialized] public bool readFromFile = false, updateReadFile = false, missingAABB = false, missingCache = false, changedAABB = false;
+
+    public int CheckPointID = -404;
 
     // Draw the yellow gizmo to know how large the managers are.
     private void OnDrawGizmosSelected()
@@ -108,6 +109,22 @@ public class TerrainMan : MonoBehaviour
 
         Gizmos.color = new Color(1, 1, 0, 0.55f);
         Gizmos.DrawCube(centerOfMeshes, scale);
+    }
+    private void Update()
+    {
+        if (Input.GetKeyUp("p"))
+        {
+            for (int x = 0; x < terrainTotalX; x++)
+            {
+                for (int y = 0; y < terrainTotalY; y++)
+                {
+                    for (int z = 0; z < terrainTotalZ; z++)
+                    {
+                        terrains[x][y][z].CreateMeshData();
+                    }
+                }
+            }
+        }
     }
 
     private void Awake()
@@ -153,6 +170,31 @@ public class TerrainMan : MonoBehaviour
         {
             SaveMesh(false);
             updateReadFile = true;
+        }
+    }
+
+    public void RestartManager()
+    {
+        for (int x = 0; x < terrainTotalX; x++)
+        {
+            for (int y = 0; y < terrainTotalY; y++)
+            {
+                for (int z = 0; z < terrainTotalZ; z++)
+                {
+                    terrains[x][y][z].RecreateMesh();
+                }
+            }
+        }
+
+        for (int x = 0; x < terrainTotalX; x++)
+        {
+            for (int y = 0; y < terrainTotalY; y++)
+            {
+                for (int z = 0; z < terrainTotalZ; z++)
+                {
+                    terrains[x][y][z].CreateMeshData();
+                }
+            }
         }
     }
 
@@ -448,9 +490,7 @@ public class TerrainMan : MonoBehaviour
     {
         if (chunkIndex.x >= 0 && chunkIndex.x < terrainTotalX && chunkIndex.y >= 0 && chunkIndex.y < terrainTotalY && chunkIndex.z >= 0 && chunkIndex.z < terrainTotalZ)
         {
-
             terrains[chunkIndex.x][chunkIndex.y][chunkIndex.z].EditTerrain(isFreeze, publicVertHitPoint, beamRadius, beamStrength, meltStrength, false);
-
 
             //terrains[chunkIndex.x][chunkIndex.y][chunkIndex.z].CreateMeshData();
         }

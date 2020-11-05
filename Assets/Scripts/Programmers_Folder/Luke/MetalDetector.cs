@@ -61,6 +61,7 @@ public class MetalDetector : MonoBehaviour
             {
                 audioPlayer.clip = closestSound;
                 audioPlayer.Play();
+                audioPlayer.volume = 0.1f; //Pat edit: lower the volume of the beeper
             }
         }
         else if (currentShortestDistance < distanceCloser)
@@ -69,6 +70,7 @@ public class MetalDetector : MonoBehaviour
             {
                 audioPlayer.clip = closerSound;
                 audioPlayer.Play();
+                audioPlayer.volume = 0.1f;  //Pat edit: lower the volume of the beeper
             }
         }
         else if (currentShortestDistance < distanceClose)
@@ -77,6 +79,7 @@ public class MetalDetector : MonoBehaviour
             {
                 audioPlayer.clip = closeSound;
                 audioPlayer.Play();
+                audioPlayer.volume = 0.1f;  //Pat edit: lower the volume of the beeper
             }
         }
 

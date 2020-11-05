@@ -45,7 +45,7 @@ public class EditableTerrain : MonoBehaviour
     private int depth = 8;
 
     public FloatMyGuy[,,] terrainMap;
-    LineRenderer lineRenderer;
+    private LineRenderer lineRenderer;
 
     private void Awake()
     {
@@ -54,10 +54,9 @@ public class EditableTerrain : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
         transform.tag = "Ice";
 
-
         for (int i = 0; i < lineRenderer.positionCount; i++)
         {
-            lineRenderer.SetPosition(i,lineRenderer.GetPosition(i) + transform.position);
+            lineRenderer.SetPosition(i, lineRenderer.GetPosition(i) + transform.position);
         }
     }
 
@@ -80,6 +79,11 @@ public class EditableTerrain : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void RecreateMesh()
+    {
+        PopulateTerrainMap();
     }
 
     // This needs to be optimized
@@ -124,7 +128,7 @@ public class EditableTerrain : MonoBehaviour
                     {
                         if (cube.checkCollision(vertPos + managerPosInt))
                         {
-                            terrainMap[x, y, z].value = -1f;
+                            terrainMap[x, y, z].value = -1f + (UnityEngine.Random.value * 0.75f);
                             break;
                         }
                         else
@@ -194,7 +198,6 @@ public class EditableTerrain : MonoBehaviour
                 if (z > 0)
                     if (terrainMap[x + 1, y - 1, z - 1].value > minValue)
                         dirtyBoi++;
-
             }
 
             if (z < depth)
@@ -204,7 +207,6 @@ public class EditableTerrain : MonoBehaviour
             if (z > 0)
                 if (terrainMap[x + 1, y, z - 1].value > minValue)
                     dirtyBoi++;
-
         }
 
         if (x > 0)
@@ -238,7 +240,6 @@ public class EditableTerrain : MonoBehaviour
                 if (z > 0)
                     if (terrainMap[x - 1, y - 1, z - 1].value > minValue)
                         dirtyBoi++;
-
             }
 
             if (z < depth)
@@ -248,7 +249,6 @@ public class EditableTerrain : MonoBehaviour
                 if (terrainMap[x - 1, y, z - 1].value > minValue)
                     dirtyBoi++;
         }
-
 
         if (z < depth)
         {
@@ -261,7 +261,6 @@ public class EditableTerrain : MonoBehaviour
             if (y > 0)
                 if (terrainMap[x, y - 1, z + 1].value > minValue)
                     dirtyBoi++;
-
         }
 
         if (z > 0)
@@ -362,14 +361,17 @@ public class EditableTerrain : MonoBehaviour
             }
         }
 
-        CreateMeshData();
-        
-        if(updateSurroundingChunks)
+
+        //CreateMeshData();
+        if (updateSurroundingChunks)
             UpdateNeighbours(freeze, publicVertPos, localVertPos, radius, FreezeStrength, MeltStrength);
-        
+
+        if (editedTerrain)
+            CreateMeshData();
+
+
         return editedTerrain;
     }
-
 
     private void UpdateNeighbours(bool isFreeze, Vector3Int publicVertPos, Vector3Int localVertPos, float radius, float beamStrength, float MeltStrength)
     {

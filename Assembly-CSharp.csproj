@@ -63,6 +63,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Materials\water\Water\Scripts\Displace.cs" />
+    <Compile Include="Assets\Materials\water\Water\Scripts\GerstnerDisplace.cs" />
+    <Compile Include="Assets\Materials\water\Water\Scripts\MeshContainer.cs" />
+    <Compile Include="Assets\Materials\water\Water\Scripts\PlanarReflection.cs" />
+    <Compile Include="Assets\Materials\water\Water\Scripts\SpecularLighting.cs" />
+    <Compile Include="Assets\Materials\water\Water\Scripts\Water.cs" />
+    <Compile Include="Assets\Materials\water\Water\Scripts\WaterBase.cs" />
+    <Compile Include="Assets\Materials\water\Water\Scripts\WaterTile.cs" />
     <Compile Include="Assets\OBJExport\OBJExporter.cs" />
     <Compile Include="Assets\Scripts\Alex\EditableTerrain.cs" />
     <Compile Include="Assets\Scripts\Alex\ManagerOfTheTerrainManagers.cs" />
@@ -91,7 +99,6 @@
     <Compile Include="Assets\Scripts\Programmers_Folder\Luke\KeyholeAnimationEvents.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\Luke\KeyManager.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\Luke\MetalDetector.cs" />
-    <Compile Include="Assets\Scripts\Programmers_Folder\Luke\MouseLook.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\Luke\PlayerInteract.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\Luke\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\Luke\ViewerRotate.cs" />
@@ -107,6 +114,8 @@
     <Compile Include="Assets\Scripts\Programmers_Folder\Michael\RegionManager.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\Michael\Screen.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\Michael\Tool.cs" />
+    <Compile Include="Assets\Scripts\Programmers_Folder\MouseLook.cs" />
+    <Compile Include="Assets\Scripts\Programmers_Folder\MovingImage.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\RockFallTrigger.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\Save Scripts\ArtifactDisplay.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\Save Scripts\ArtifactManager.cs" />
@@ -114,6 +123,8 @@
     <Compile Include="Assets\Scripts\Programmers_Folder\Save Scripts\CheckpointManager.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\Save Scripts\SaveData.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\Save Scripts\SaveManager.cs" />
+    <Compile Include="Assets\Scripts\Programmers_Folder\SongTransition.cs" />
+    <Compile Include="Assets\Scripts\Programmers_Folder\SongTransitionTrigger.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\SubtitleManager.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\Subtitles.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\SubtitleTrigger.cs" />
@@ -127,12 +138,15 @@
     <None Include="Assets\Materials\Shader\Triplanar.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\Materials\water\Water4\Shaders\FXWater4Simple.shader" />
+    <None Include="Assets\Materials\water\DO_NOT_WORK_IN_VR.txt" />
     <None Include="Assets\Materials\Shader\IceSHader (2).shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\Materials\Shader\IceSHader (1).shader" />
+    <None Include="Assets\Materials\water\Water\Shaders\FXWaterPro.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
@@ -142,7 +156,9 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\Materials\Texture\Fresnel.shader" />
+    <None Include="Assets\Materials\water\Water4\Shaders\WaterInclude.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\Materials\water\Water4\Shaders\FXWater4Advanced.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />

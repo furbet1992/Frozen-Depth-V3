@@ -3,7 +3,7 @@
     Author:    Luke Lazzaro
     Summary: Adds first person movement to the player
     Creation Date: 20/07/2020
-    Last Modified: 28/10/2020
+    Last Modified: 4/11/2020
 */
 
 using System;
@@ -24,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private float groundCheckRadius = 0.5f;
     [SerializeField] private float deathTimer = 1;
+    [Tooltip("Should only be enabled for testing purposes.")]
+    [SerializeField] private bool enableSuicide = false;
 
     [Header("Camera")]
     [SerializeField] private GameObject playerCamera;
@@ -142,6 +144,11 @@ public class PlayerMovement : MonoBehaviour
             Crouch();
         }
 
+        if (enableSuicide && Input.GetKeyDown(KeyCode.K))
+        {
+            Die();
+        }
+
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
@@ -199,12 +206,13 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Call this in LateUpdate, otherwise the position will be overwritten by player movement.
-    private void GoToLastCheckpoint()
+    public void GoToLastCheckpoint()
     {
         if (CheckpointManager.currentCheckpoint != null)
         {
             transform.position = CheckpointManager.currentCheckpoint.transform.position;
             transform.rotation = CheckpointManager.currentCheckpoint.transform.rotation;
+            CheckpointManager.currentCheckpoint.GetComponent<Checkpoint>().ResetMeshes();
         }
         else
         {

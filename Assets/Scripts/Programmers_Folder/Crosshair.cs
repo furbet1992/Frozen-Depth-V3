@@ -15,12 +15,12 @@ public class Crosshair : MonoBehaviour
 {
     [SerializeField] Sprite withinRangeImage;
     [SerializeField] Sprite outOfRangeImage;
-    public Image crosshairRenderer;
+    Image crosshairRenderer;
 
     void Start()
     {
         // get the mesh renderer component
-        //crosshairRenderer = GetComponent<Image>();
+        crosshairRenderer = GetComponent<Image>();
     }
 
     // sets the image used to represent the crosshair
