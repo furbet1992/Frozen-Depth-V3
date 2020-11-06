@@ -93,6 +93,7 @@
     <Compile Include="Assets\Scripts\Programmers_Folder\Luke\Antidote.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\Luke\DeathTrigger.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\Luke\DetectorLight.cs" />
+    <Compile Include="Assets\Scripts\Programmers_Folder\Luke\Footsteps.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\Luke\Interactable.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\Luke\Key.cs" />
     <Compile Include="Assets\Scripts\Programmers_Folder\Luke\Keyhole.cs" />

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.871
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.14305884, g: 0.16748369, b: 0.18970034, a: 0.871}
+  m_IndirectSpecularColor: {r: 0.15139093, g: 0.18928616, b: 0.26083526, a: 0.871}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11990,7 +11990,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 103.08099, y: 369.848, z: 369.198}
 --- !u!1001 &267588277
 PrefabInstance:
@@ -12204,7 +12204,7 @@ Transform:
   - {fileID: 1541980334}
   - {fileID: 519709072}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &280607762
 GameObject:
@@ -37343,12 +37343,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1025389772 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 950115656684102609, guid: 5456e76dd6e2ece47a31f5b11292fcd3,
-    type: 3}
-  m_PrefabInstance: {fileID: 1182087528}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1025806526 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 74dd6282c3215854593a32e89c6ba729,
@@ -38811,26 +38805,13 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SettingsButton
       objectReference: {fileID: 0}
+    - target: {fileID: 2578843778276000709, guid: 5456e76dd6e2ece47a31f5b11292fcd3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5456e76dd6e2ece47a31f5b11292fcd3, type: 3}
---- !u!1 &1182087529 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 950115655898975487, guid: 5456e76dd6e2ece47a31f5b11292fcd3,
-    type: 3}
-  m_PrefabInstance: {fileID: 1182087528}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1182087530 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 950115656312838776, guid: 5456e76dd6e2ece47a31f5b11292fcd3,
-    type: 3}
-  m_PrefabInstance: {fileID: 1182087528}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1182087531 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 950115655317357413, guid: 5456e76dd6e2ece47a31f5b11292fcd3,
-    type: 3}
-  m_PrefabInstance: {fileID: 1182087528}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1190227799 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 74dd6282c3215854593a32e89c6ba729,
@@ -38924,7 +38905,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1192344000
 MonoBehaviour:
@@ -38941,12 +38922,30 @@ MonoBehaviour:
   mainMenuCamera: {fileID: 4813557411492446797, guid: 253bbc04a0de6cb40ac02df58ba701e0,
     type: 3}
   playerCamera: {fileID: 1736961545}
-  mainMenuUI: {fileID: 1182087530}
-  gameMenuUI: {fileID: 1182087531}
-  inGameUI: {fileID: 1025389772}
-  settingsUI: {fileID: 1182087529}
-  currentUI: {fileID: 0}
-  inGame: 0
+  mainMenuUI: {fileID: 0}
+  gameMenuUI: {fileID: 0}
+  inGameUI: {fileID: 0}
+  settingsUI: {fileID: 0}
+  player: {fileID: 0}
+  viewerRotate: {fileID: 0}
+  masterVolumeSlider: {fileID: 0}
+  masterVolumeValueText: {fileID: 0}
+  musicVolumeSlider: {fileID: 0}
+  musicVolumeValueText: {fileID: 0}
+  dialogueVolumeSlider: {fileID: 0}
+  dialogueVolumeValueText: {fileID: 0}
+  soundEffectVolumeSlider: {fileID: 0}
+  soundEffectVolumeValueText: {fileID: 0}
+  sensitivitySlider: {fileID: 0}
+  sensitivityValueText: {fileID: 0}
+  fieldOfViewSlider: {fileID: 0}
+  fieldOfViewValueText: {fileID: 0}
+  fullScreenToggle: {fileID: 0}
+  musicPlayers: []
+  dialoguePlayers: []
+  soundEffectPlayers: []
+  startInMainMenu: 1
+  musicVolume: 1
 --- !u!1001 &1192686894
 PrefabInstance:
   m_ObjectHideFlags: 0

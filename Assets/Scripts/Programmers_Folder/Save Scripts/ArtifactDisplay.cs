@@ -25,7 +25,7 @@ public class ArtifactDisplay : MonoBehaviour
             // store that this is the moving image's artifact display
             movingImage.GetComponent<MovingImage>().artifactDisplay = this;
             // create a moving image at the center of the screen, with 0 rotation and the parent of this game object
-            Instantiate(movingImage, transform.parent.transform.parent.position, Quaternion.identity, transform.parent);
+            Instantiate(movingImage, transform.parent.position, Quaternion.identity, transform.parent);
             // store that this function has been called
             called = true;
         }

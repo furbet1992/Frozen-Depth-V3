@@ -3,7 +3,7 @@
     Author:    Luke Lazzaro
     Summary: Enables interaction and opens artifact viewer
     Creation Date: 21/07/2020
-    Last Modified: 2/11/2020
+    Last Modified: 6/11/2020
 */
 
 using System;
@@ -19,12 +19,7 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private Transform playerCamera;
     [SerializeField] private MeshFilter artifactViewer;
     [SerializeField] private Text viewerDescription;
-    [SerializeField] private GameObject gunObject;
-    [SerializeField] private GameObject freezerAttachment;
-
-    [Header("Tutorials")]
-    [SerializeField] private GameObject meltTutorial;
-    [SerializeField] private GameObject createTutorial;
+    [SerializeField] private AudioClip antidotePickupSound;
 
     // Used for enabling and disabling player movement
     private PlayerMovement pmScript;
@@ -33,11 +28,14 @@ public class PlayerInteract : MonoBehaviour
     // Used for enabling tool freezing
     private Tool toolScript;
 
+    private AudioSource antidotePickupSource;
+
     private void Awake()
     {
         pmScript = GetComponent<PlayerMovement>();
         mlScript = playerCamera.gameObject.GetComponent<MouseLook>();
         toolScript = GetComponent<Tool>();
+        antidotePickupSource = gameObject.AddComponent<AudioSource>();
     }
 
     private void Update()
@@ -45,10 +43,6 @@ public class PlayerInteract : MonoBehaviour
         // Pressing E while standing in front of an interactable enables the artifact viewer for that object
         if (Input.GetKeyDown(KeyCode.E))
         {
-            // remove any active tutorials
-            meltTutorial.SetActive(false);
-            createTutorial.SetActive(false);
-
             Vector3 camPos = playerCamera.position;
 
             RaycastHit hit;
@@ -69,25 +63,19 @@ public class PlayerInteract : MonoBehaviour
                 }
                 else if (keyhole != null)
                 {
-                    keyhole.PlaceKeyOnKeyhole();
+                    keyhole.Open();
                 }
                 else if (antidote != null)
                 {
+                    antidotePickupSource.clip = antidotePickupSound;
+                    antidotePickupSource.Play();
+
                     antidote.Collect();
-                }
-                else if (hit.collider.CompareTag("gun"))
-                {
-                    gunObject.SetActive(true);
-                    toolScript.enabled = true;
-                    meltTutorial.SetActive(true);
-                    Destroy(hit.collider.gameObject);
-                }
+                }    
                 else if (hit.collider.CompareTag("Tool Component"))
                 {
                     toolScript.canFreeze = true;
                     hit.collider.gameObject.SetActive(false);
-                    createTutorial.SetActive(true);
-                    freezerAttachment.SetActive(true); 
                 }
             }
         }
