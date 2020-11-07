@@ -15,7 +15,7 @@ using UnityEngine;
 public struct FootstepSound
 {
     public int layerNumber;
-    public AudioClip audioClip;
+    public AudioClip audioClip; 
 }
 
 public class Footsteps : MonoBehaviour
@@ -50,6 +50,7 @@ public class Footsteps : MonoBehaviour
                     {
                         footstepSource.clip = sound.audioClip;
                         footstepSource.Play();
+                        footstepSource.volume = 0.2f;  
                     }
                     else
                     {
@@ -61,6 +62,7 @@ public class Footsteps : MonoBehaviour
                             {
                                 footstepSource.clip = sound.audioClip;
                                 footstepSource.Play();
+                                footstepSource.volume = 0.2f;
                                 hasPlayed = true;
                             }
                         }

@@ -34,6 +34,10 @@ public class FireRay : MonoBehaviour
     [SerializeField] private float doorRisingSpeed = 10;
     private Vector3 originalPos;
 
+
+    public AudioSource hooray; 
+
+
     //Button
     private LayerMask interactableAction;
     //public GameObject gate;
@@ -62,7 +66,7 @@ public class FireRay : MonoBehaviour
                     Destroy(rayhit.collider.gameObject);
 
                     //play narrative here
-                    // "Woo I got the antidote!"
+                    hooray.Play(); 
 
 
 
@@ -83,7 +87,7 @@ public class FireRay : MonoBehaviour
 
             IEnumerator nextSound()
             {
-                yield return new WaitForSeconds(2);
+                yield return new WaitForSeconds(1);
                 largeRockSlide.Play();
                 fallingStones2.SetActive(true);
                 //the floor gates to open

@@ -15,7 +15,7 @@ public class Crosshair : MonoBehaviour
 {
     [SerializeField] Sprite withinRangeImage;
     [SerializeField] Sprite outOfRangeImage;
-    Image crosshairRenderer;
+    public Image crosshairRenderer;
 
     void Start()
     {
