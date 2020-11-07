@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2013451271025730017}
-  - component: {fileID: 1995783826}
   - component: {fileID: 63435470663427363}
+  - component: {fileID: 6955165333085994833}
   m_Layer: 9
   m_Name: Antidotes
   m_TagString: Untagged
@@ -33,22 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1995783826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6699378171362086557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c72a77c57f65ba499f9fd180f2dd2a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dosageAmount: 1000
-  blueAntidote: {fileID: 0}
-  redAntidote: {fileID: 0}
-  yellowAntidote: {fileID: 0}
 --- !u!136 &63435470663427363
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -63,6 +47,21 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6955165333085994833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6699378171362086557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 613bde3d9849a9f44b15ba09b29ac0bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 
+  artifactDisplay: {fileID: 0}
+  description: 
 --- !u!1001 &3490555581479429794
 PrefabInstance:
   m_ObjectHideFlags: 0

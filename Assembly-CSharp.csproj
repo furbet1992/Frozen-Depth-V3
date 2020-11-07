@@ -72,6 +72,7 @@
     <Compile Include="Assets\Materials\water\Water\Scripts\WaterBase.cs" />
     <Compile Include="Assets\Materials\water\Water\Scripts\WaterTile.cs" />
     <Compile Include="Assets\OBJExport\OBJExporter.cs" />
+    <Compile Include="Assets\Prefabs\Object_Icon\ObjectIcon.cs" />
     <Compile Include="Assets\Scripts\Alex\EditableTerrain.cs" />
     <Compile Include="Assets\Scripts\Alex\ManagerOfTheTerrainManagers.cs" />
     <Compile Include="Assets\Scripts\Alex\TerrainMan.cs" />
