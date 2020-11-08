@@ -20,8 +20,8 @@ public class FireRay : MonoBehaviour
     public GameObject fallingStones;
     public GameObject fallingStones2;
 
-    public GameObject leftDoor;
-    public GameObject rightDoor;
+    //public GameObject leftDoor;
+    //public GameObject rightDoor;
     public  bool doorOpening=false;
 
 

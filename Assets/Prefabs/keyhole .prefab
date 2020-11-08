@@ -282,7 +282,8 @@ MonoBehaviour:
   openBehaviour: 0
   placeForKeyMesh: {fileID: 1914662226}
   animatedModel: {fileID: 8183969456116471339}
-  targetPos: {x: 0, y: 3, z: 0}
+  keyholeSound: {fileID: 8300000, guid: d44b08452f997db428cc2d3976b2623a, type: 3}
+  targetPos: {x: 0, y: 7, z: 0}
   doorRisingSpeed: 4
 --- !u!114 &351369876292861518
 MonoBehaviour:

@@ -2009,6 +2009,32 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2082551319}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &173094435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173094432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c92f02e82b3ebb645bbd53296f8bbc38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  earthQuake: {fileID: 30433220}
+  smallrockSlide: {fileID: 43772788}
+  largeRockSlide: {fileID: 43772788}
+  gateOpening: {fileID: 1629862251}
+  hydraulicSound: {fileID: 1241265234}
+  fallingStones: {fileID: 43772787}
+  fallingStones2: {fileID: 43772787}
+  doorOpening: 0
+  activation_doorA: {fileID: 1307758647}
+  activation_doorB: {fileID: 1120528800}
+  barrier: {fileID: 709931471}
+  targetPos: {x: 0, y: 800, z: 0}
+  doorRisingSpeed: 800
+  hooray: {fileID: 109967780}
 --- !u!1 &175265033
 GameObject:
   m_ObjectHideFlags: 0
@@ -28712,6 +28738,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 764006173}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &528399492 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8905605580839332947, guid: 5f00f3c4dd19886489a47ecb991cb598,
+    type: 3}
+  m_PrefabInstance: {fileID: 404612496}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &529191845
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37207,6 +37239,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &711841431 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8905605580896321245, guid: 5f00f3c4dd19886489a47ecb991cb598,
+    type: 3}
+  m_PrefabInstance: {fileID: 404612496}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &718878902
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50687,6 +50725,12 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &1125253712 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6645450958579933996, guid: a7bfc646507bff941a0b0e9d7d2f3bb0,
+    type: 3}
+  m_PrefabInstance: {fileID: 2082551319}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1126701867
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51327,7 +51371,7 @@ MonoBehaviour:
   musicPlayers: []
   dialoguePlayers: []
   soundEffectPlayers: []
-  startInMainMenu: 1
+  startInMainMenu: 0
   musicVolume: 1
 --- !u!1 &1196973078 stripped
 GameObject:
@@ -54320,6 +54364,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdc752612c8c25945bf780941e815dc1, type: 3}
+--- !u!1 &1392696880 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6673419176215619738, guid: a7bfc646507bff941a0b0e9d7d2f3bb0,
+    type: 3}
+  m_PrefabInstance: {fileID: 2082551319}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1403272466 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 4dc587551dfddd24c8e6c5fd70019709,
@@ -63519,6 +63569,11 @@ PrefabInstance:
       propertyPath: entrancesParent
       value: 
       objectReference: {fileID: 1714536575}
+    - target: {fileID: 6673419176215619738, guid: a7bfc646507bff941a0b0e9d7d2f3bb0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7163581354881247474, guid: a7bfc646507bff941a0b0e9d7d2f3bb0,
         type: 3}
       propertyPath: steamParticleEmitter
@@ -63604,6 +63659,26 @@ PrefabInstance:
       propertyPath: viewerDescription
       value: 
       objectReference: {fileID: 2082085442}
+    - target: {fileID: 7956898047223219073, guid: a7bfc646507bff941a0b0e9d7d2f3bb0,
+        type: 3}
+      propertyPath: gunObject
+      value: 
+      objectReference: {fileID: 1392696880}
+    - target: {fileID: 7956898047223219073, guid: a7bfc646507bff941a0b0e9d7d2f3bb0,
+        type: 3}
+      propertyPath: freezerAttachment
+      value: 
+      objectReference: {fileID: 1125253712}
+    - target: {fileID: 7956898047223219073, guid: a7bfc646507bff941a0b0e9d7d2f3bb0,
+        type: 3}
+      propertyPath: createTutorial
+      value: 
+      objectReference: {fileID: 528399492}
+    - target: {fileID: 7956898047223219073, guid: a7bfc646507bff941a0b0e9d7d2f3bb0,
+        type: 3}
+      propertyPath: meltTutorial
+      value: 
+      objectReference: {fileID: 711841431}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7bfc646507bff941a0b0e9d7d2f3bb0, type: 3}
 --- !u!1 &2083892522
