@@ -3,7 +3,7 @@
     Author:    Luke Lazzaro
     Summary: Enables interaction and opens artifact viewer
     Creation Date: 21/07/2020
-    Last Modified: 8/11/2020
+    Last Modified: 9/11/2020
 */
 
 using System;
@@ -56,7 +56,12 @@ public class PlayerInteract : MonoBehaviour
             Vector3 camPos = playerCamera.position;
 
             RaycastHit hit;
-            if (Physics.Raycast(camPos, playerCamera.TransformDirection(Vector3.forward), out hit, interactReach, interactableMask))
+
+            if (!pmScript.enabled)
+            {
+                DisableArtifactViewer(true);
+            }
+            else if (Physics.Raycast(camPos, playerCamera.TransformDirection(Vector3.forward), out hit, interactReach, interactableMask))
             {
                 Interactable interactable = hit.collider.GetComponent<Interactable>();
                 Key key = hit.collider.GetComponent<Key>();
@@ -94,14 +99,9 @@ public class PlayerInteract : MonoBehaviour
                     toolScript.canFreeze = true;
                     hit.collider.gameObject.SetActive(false);
                     createTutorial.SetActive(true);
-                    freezerAttachment.SetActive(false);
+                    freezerAttachment.SetActive(true);
                 }
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space) && pmScript.enabled == false)
-        {
-            DisableArtifactViewer(true);
         }
     }
 
@@ -126,6 +126,7 @@ public class PlayerInteract : MonoBehaviour
         viewerDescription.gameObject.SetActive(true);
 
         artifactViewer.mesh = obj.GetComponent<MeshFilter>().mesh;
+        artifactViewer.gameObject.GetComponent<MeshRenderer>().material = obj.GetComponent<MeshRenderer>().material;
         artifactViewer.transform.localScale = obj.transform.localScale;
 
         try

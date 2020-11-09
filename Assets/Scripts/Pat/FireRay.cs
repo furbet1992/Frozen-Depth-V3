@@ -35,7 +35,9 @@ public class FireRay : MonoBehaviour
     private Vector3 originalPos;
 
 
-    public AudioSource hooray; 
+    public AudioSource hooray;
+
+    ArtifactDisplay artifactDisplay;  
 
 
     //Button

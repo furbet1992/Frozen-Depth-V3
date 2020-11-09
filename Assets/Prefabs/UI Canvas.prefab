@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.81960785, g: 1, b: 1, a: 0.8392157}
+  m_Color: {r: 0.81960785, g: 1, b: 1, a: 0.07058824}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -169,6 +169,7 @@ MonoBehaviour:
   movingImage: {fileID: 7583530623981010729, guid: 71656b7c940cf9549bfd16641746654c,
     type: 3}
   shown: {fileID: 21300000, guid: 737607c22216cb549a4791505ab8e0e4, type: 3}
+  foundAlpha: 1
 --- !u!1 &476904783
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,7 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.81960785, g: 1, b: 1, a: 0.8392157}
+  m_Color: {r: 0.81960785, g: 1, b: 1, a: 0.07058824}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -257,7 +258,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movingImage: {fileID: 7583530623981010729, guid: 71656b7c940cf9549bfd16641746654c,
     type: 3}
-  shown: {fileID: 21300000, guid: 04ae0bd61c288d248b2fe7e60ed8e2bd, type: 3}
+  shown: {fileID: 21300000, guid: 49518b64a8c997049a2030cc865dfaae, type: 3}
+  foundAlpha: 1
 --- !u!1 &1041280320
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,7 +631,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.81960785, g: 1, b: 1, a: 0.8392157}
+  m_Color: {r: 0.81960785, g: 1, b: 1, a: 0.07058824}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -659,6 +661,7 @@ MonoBehaviour:
   movingImage: {fileID: 7583530623981010729, guid: 71656b7c940cf9549bfd16641746654c,
     type: 3}
   shown: {fileID: 21300000, guid: ba418e64ebbf74b4fad45e473255a0a7, type: 3}
+  foundAlpha: 1
 --- !u!1 &1775456831
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,7 +721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.81960785, g: 1, b: 1, a: 0.8392157}
+  m_Color: {r: 0.81960785, g: 1, b: 1, a: 0.07058824}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -748,6 +751,7 @@ MonoBehaviour:
   movingImage: {fileID: 7583530623981010729, guid: 71656b7c940cf9549bfd16641746654c,
     type: 3}
   shown: {fileID: 21300000, guid: 42d4189c50a0a75459933b45c26436e4, type: 3}
+  foundAlpha: 1
 --- !u!1 &1800593379
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,7 +788,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1500, y: 1500}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1800593381
 CanvasRenderer:
@@ -893,7 +897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.81960785, g: 1, b: 1, a: 0.19607843}
+  m_Color: {r: 0.81960785, g: 1, b: 1, a: 0.07058824}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -923,6 +927,7 @@ MonoBehaviour:
   movingImage: {fileID: 7583530623981010729, guid: 71656b7c940cf9549bfd16641746654c,
     type: 3}
   shown: {fileID: 21300000, guid: cd4f0761adfc1394496e272f1063a645, type: 3}
+  foundAlpha: 1
 --- !u!1 &216968392676140168
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,7 +987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.81960785, g: 1, b: 1, a: 0.8392157}
+  m_Color: {r: 0.81960785, g: 1, b: 1, a: 0.07058824}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1012,6 +1017,7 @@ MonoBehaviour:
   movingImage: {fileID: 7583530623981010729, guid: 71656b7c940cf9549bfd16641746654c,
     type: 3}
   shown: {fileID: 21300000, guid: 5b7400d487f03b34eac43c892d9b1f83, type: 3}
+  foundAlpha: 1
 --- !u!1 &218112114426281725
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,7 +1077,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.81960785, g: 1, b: 1, a: 0.8392157}
+  m_Color: {r: 0.83766466, g: 0.9811321, b: 0.9811321, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1101,6 +1107,7 @@ MonoBehaviour:
   movingImage: {fileID: 7583530623981010729, guid: 71656b7c940cf9549bfd16641746654c,
     type: 3}
   shown: {fileID: 21300000, guid: bcf627bdf6dd4b348a1839506d0ceea5, type: 3}
+  foundAlpha: 1
 --- !u!1 &2313559620303340460
 GameObject:
   m_ObjectHideFlags: 0
@@ -1233,7 +1240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.81960785, g: 1, b: 1, a: 0.8392157}
+  m_Color: {r: 0.81960785, g: 1, b: 1, a: 0.07058824}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1263,6 +1270,7 @@ MonoBehaviour:
   movingImage: {fileID: 7583530623981010729, guid: 71656b7c940cf9549bfd16641746654c,
     type: 3}
   shown: {fileID: 21300000, guid: f37fef8e36b2bd844bf18617870bef39, type: 3}
+  foundAlpha: 1
 --- !u!1 &4232955869793309652
 GameObject:
   m_ObjectHideFlags: 0
@@ -1322,7 +1330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.81960785, g: 1, b: 1, a: 0.8392157}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.07058824}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1352,6 +1360,7 @@ MonoBehaviour:
   movingImage: {fileID: 7583530623981010729, guid: 71656b7c940cf9549bfd16641746654c,
     type: 3}
   shown: {fileID: 21300000, guid: c576758b436939c45aa0e3e7753301aa, type: 3}
+  foundAlpha: 1
 --- !u!1 &8905605580839332947
 GameObject:
   m_ObjectHideFlags: 0
