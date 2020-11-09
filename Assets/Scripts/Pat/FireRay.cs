@@ -34,9 +34,6 @@ public class FireRay : MonoBehaviour
     [SerializeField] private float doorRisingSpeed = 10;
     private Vector3 originalPos;
 
-
-    public AudioSource hooray;
-
     ArtifactDisplay artifactDisplay;  
 
 
@@ -63,14 +60,9 @@ public class FireRay : MonoBehaviour
             {
                 if (rayhit.collider.gameObject.name == "Antidote (3)")
                 {
-                    
+                    Debug.Log("got it"); 
                     //delete that artifact
                     Destroy(rayhit.collider.gameObject);
-
-                    //play narrative here
-                    hooray.Play(); 
-
-
 
                     //play sound of earthquake
                     earthQuake.Play();
