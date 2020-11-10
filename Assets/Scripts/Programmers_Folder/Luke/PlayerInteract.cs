@@ -3,7 +3,7 @@
     Author:    Luke Lazzaro
     Summary: Enables interaction and opens artifact viewer
     Creation Date: 21/07/2020
-    Last Modified: 12/10/2020
+    Last Modified: 20/10/2020
 */
 
 using System;
@@ -20,6 +20,10 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private MeshFilter artifactViewer;
     [SerializeField] private Text viewerDescription;
     [SerializeField] private GameObject gunObject;
+
+    [Header("Tutorials")]
+    [SerializeField] private GameObject meltTutorial;
+    [SerializeField] private GameObject createTutorial;
 
     // Used for enabling and disabling player movement
     private PlayerMovement pmScript;
@@ -40,6 +44,10 @@ public class PlayerInteract : MonoBehaviour
         // Pressing E while standing in front of an interactable enables the artifact viewer for that object
         if (Input.GetKeyDown(KeyCode.E))
         {
+            // remove any active tutorials
+            meltTutorial.SetActive(false);
+            createTutorial.SetActive(false);
+
             Vector3 camPos = playerCamera.position;
 
             RaycastHit hit;
@@ -60,7 +68,8 @@ public class PlayerInteract : MonoBehaviour
                 }
                 else if (keyhole != null)
                 {
-                    keyhole.Open();
+                    keyhole.animatedModel.SetTrigger("Lock In");
+                    keyhole.PlaceKeyOnKeyhole();
                 }
                 else if (antidote != null)
                 {
@@ -70,12 +79,14 @@ public class PlayerInteract : MonoBehaviour
                 {
                     gunObject.SetActive(true);
                     toolScript.enabled = true;
+                    meltTutorial.SetActive(true);
                     Destroy(hit.collider.gameObject);
                 }
                 else if (hit.collider.CompareTag("Tool Component"))
                 {
                     toolScript.canFreeze = true;
                     hit.collider.gameObject.SetActive(false);
+                    createTutorial.SetActive(true);
                 }
             }
         }

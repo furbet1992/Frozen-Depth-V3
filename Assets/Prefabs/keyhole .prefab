@@ -281,8 +281,21 @@ MonoBehaviour:
   objectToOpen: {fileID: 0}
   openBehaviour: 0
   placeForKeyMesh: {fileID: 1914662226}
+  animatedModel: {fileID: 0}
   targetPos: {x: 0, y: 8, z: 0}
   doorRisingSpeed: 4
+--- !u!114 &5880068677519394807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2972963740959000898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca5efa5a5044ef945b5420ad263edfcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6513326370636238923
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -290,6 +303,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 787892869124471942}
     m_Modifications:
+    - target: {fileID: -6057140222963153312, guid: a4f38d46d6b34ab4e972cf6c35b96022,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 58eea1e69d71aef459c9fe2939adb586, type: 2}
     - target: {fileID: -4216859302048453862, guid: a4f38d46d6b34ab4e972cf6c35b96022,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -357,6 +375,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4f38d46d6b34ab4e972cf6c35b96022, type: 3}
+--- !u!1 &2972963740959000898 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: a4f38d46d6b34ab4e972cf6c35b96022,
+    type: 3}
+  m_PrefabInstance: {fileID: 6513326370636238923}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2240909278559648593 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: a4f38d46d6b34ab4e972cf6c35b96022,
