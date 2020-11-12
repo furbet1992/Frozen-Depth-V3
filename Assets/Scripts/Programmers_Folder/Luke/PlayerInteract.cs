@@ -3,7 +3,7 @@
     Author:    Luke Lazzaro
     Summary: Enables interaction and opens artifact viewer
     Creation Date: 21/07/2020
-    Last Modified: 9/11/2020
+    Last Modified: 10/11/2020
 */
 
 using System;
@@ -23,6 +23,7 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private GameObject freezerAttachment;
     [SerializeField] private AudioClip antidotePickupSound;
     [SerializeField] private MenuManager menuManager;
+    [SerializeField] private GameObject fuelBar;
 
     [Header("Tutorials")]
     [SerializeField] private GameObject meltTutorial;
@@ -103,6 +104,7 @@ public class PlayerInteract : MonoBehaviour
                     hit.collider.gameObject.SetActive(false);
                     createTutorial.SetActive(true);
                     freezerAttachment.SetActive(true);
+                    fuelBar.SetActive(true);
                 }
             }
         }
@@ -142,7 +144,7 @@ public class PlayerInteract : MonoBehaviour
             Debug.LogError("Interactable objects must have the Interactable.cs script attached to work properly.");
         }
 
-        pmScript.enabled = false;
+        pmScript.enabled = obj.GetComponent<Interactable>().playerCanMove;
         mlScript.enabled = false;
         toolScript.enabled = false;
 
@@ -158,7 +160,12 @@ public class PlayerInteract : MonoBehaviour
         {
             pmScript.enabled = true;
             mlScript.enabled = true;
-            toolScript.enabled = true;
+
+            if (menuManager.playerHasTool)
+            {
+                toolScript.enabled = true;
+            }
+
         }
 
         Cursor.lockState = CursorLockMode.Locked;
