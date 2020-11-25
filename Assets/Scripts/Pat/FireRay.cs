@@ -9,6 +9,8 @@ public class FireRay : MonoBehaviour
     Ray ray;
     float distanceRay = 20;
 
+    public GameObject playerCamera;
+
     //   //falling rock sounds
     public AudioSource earthQuake;
     public AudioSource smallrockSlide;
@@ -53,7 +55,7 @@ public class FireRay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out rayhit, distanceRay))
+        if (playerCamera.activeSelf && Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out rayhit, distanceRay))
         {
 
             if (Input.GetKey(KeyCode.E))
@@ -95,8 +97,6 @@ public class FireRay : MonoBehaviour
             //gate.transform.position += new Vector3(0f, 2.5f, 0f);
 
         }
-
-            Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * distanceRay);
 
         }
     }
