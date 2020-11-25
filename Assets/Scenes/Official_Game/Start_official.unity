@@ -651,6 +651,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -179
       objectReference: {fileID: 0}
+    - target: {fileID: 7454897473919794928, guid: 5456e76dd6e2ece47a31f5b11292fcd3,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.8613557
+      objectReference: {fileID: 0}
+    - target: {fileID: 7454897473919794928, guid: 5456e76dd6e2ece47a31f5b11292fcd3,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.5690637
+      objectReference: {fileID: 0}
+    - target: {fileID: 7454897473919794928, guid: 5456e76dd6e2ece47a31f5b11292fcd3,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.8679245
+      objectReference: {fileID: 0}
     - target: {fileID: 7454897473919794934, guid: 5456e76dd6e2ece47a31f5b11292fcd3,
         type: 3}
       propertyPath: m_IsActive
@@ -24939,7 +24954,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1800593379, guid: 5f00f3c4dd19886489a47ecb991cb598, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 64265198235227536, guid: 5f00f3c4dd19886489a47ecb991cb598,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225978557627614625, guid: 5f00f3c4dd19886489a47ecb991cb598,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -74010,6 +74034,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Player '
       objectReference: {fileID: 0}
+    - target: {fileID: 7378774538992420663, guid: a7bfc646507bff941a0b0e9d7d2f3bb0,
+        type: 3}
+      propertyPath: amplitude
+      value: 0.03
+      objectReference: {fileID: 0}
     - target: {fileID: 7956898047223219073, guid: a7bfc646507bff941a0b0e9d7d2f3bb0,
         type: 3}
       propertyPath: viewerDescription
@@ -75418,6 +75447,7 @@ MonoBehaviour:
   description: 'Acetylcysteine Antidote 250ML
 
 '
+  playerCanMove: 0
 --- !u!65 &4215923917832378953
 BoxCollider:
   m_ObjectHideFlags: 0
