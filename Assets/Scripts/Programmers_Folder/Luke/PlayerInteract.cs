@@ -29,6 +29,10 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private GameObject meltTutorial;
     [SerializeField] private GameObject createTutorial;
 
+    [Header("CollectableUI")]
+    [SerializeField] private GameObject collectableUI;
+    [SerializeField] private GameObject antidotes; 
+
     // Used for enabling and disabling player movement
     private PlayerMovement pmScript;
     private MouseLook mlScript;
@@ -54,6 +58,7 @@ public class PlayerInteract : MonoBehaviour
             // remove any active tutorials
             meltTutorial.SetActive(false);
             createTutorial.SetActive(false);
+            collectableUI.SetActive(false); 
 
             Vector3 camPos = playerCamera.position;
 
@@ -105,6 +110,11 @@ public class PlayerInteract : MonoBehaviour
                     createTutorial.SetActive(true);
                     freezerAttachment.SetActive(true);
                     fuelBar.SetActive(true);
+                }
+                else if (hit.collider.CompareTag("CollectUI"))
+                {
+                    collectableUI.SetActive(true);
+                    antidotes.SetActive(true); 
                 }
             }
         }

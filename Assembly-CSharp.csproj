@@ -77,6 +77,8 @@
     <Compile Include="Assets\Scripts\Alex\ManagerOfTheTerrainManagers.cs" />
     <Compile Include="Assets\Scripts\Alex\TerrainMan.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Pat\BlackScreen.cs" />
+    <Compile Include="Assets\Scripts\Pat\CollectableUI.cs" />
     <Compile Include="Assets\Scripts\Pat\EnergySource.cs" />
     <Compile Include="Assets\Scripts\Pat\FallingStalactites.cs" />
     <Compile Include="Assets\Scripts\Pat\FireRay.cs" />

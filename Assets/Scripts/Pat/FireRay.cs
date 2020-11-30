@@ -7,7 +7,7 @@ public class FireRay : MonoBehaviour
 {
     RaycastHit rayhit;
     Ray ray;
-    float distanceRay = 20;
+    float distanceRay = 8;
 
     public GameObject playerCamera;
 
@@ -83,7 +83,7 @@ public class FireRay : MonoBehaviour
 
             IEnumerator nextSound()
             {
-                yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(0);
                 largeRockSlide.Play();
                 fallingStones2.SetActive(true);
                 //the floor gates to open

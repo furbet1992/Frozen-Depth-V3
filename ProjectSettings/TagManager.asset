@@ -10,6 +10,7 @@ TagManager:
   - Tool Component
   - gun
   - Antidote
+  - CollectUI
   layers:
   - Default
   - TransparentFX

@@ -33,6 +33,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float camHeight = 2;
     [SerializeField] private float camCrouchHeight = 1;
 
+    [Header("Screen Fade")]
+    [SerializeField] private Screen screen;
+    [SerializeField] private float fadeDuration = 0.2f;
+
     [Header("Char. Controller")]
     [SerializeField] private float ccHeight = 3;
     [SerializeField] private float ccCrouchHeight = 2;
@@ -261,6 +265,7 @@ public class PlayerMovement : MonoBehaviour
         currentDeathTimer = deathTimer;
         canMove = true;
         playerCamera.GetComponent<MouseLook>().enabled = true;
+        screen.Fade(fadeDuration, false);
     }
 
     // Overrides any properties currently set on the character controller with the properties set on this script
