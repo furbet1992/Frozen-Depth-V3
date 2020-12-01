@@ -25,14 +25,14 @@ public class Footsteps : MonoBehaviour
     [SerializeField] private List<FootstepSound> footstepSounds = new List<FootstepSound>();
     private PlayerMovement pm;
     private MouseLook ml;
-    private AudioSource footstepSource;
+    [SerializeField] private AudioSource footstepSource;
     private bool hasPlayed = false;
 
     private void Awake()
     {
         pm = GetComponent<PlayerMovement>();
         ml = pm.playerCamera.GetComponent<MouseLook>();
-        footstepSource = gameObject.AddComponent<AudioSource>();
+        //footstepSource = gameObject.AddComponent<AudioSource>();
     }
 
     private void Update()
@@ -50,7 +50,7 @@ public class Footsteps : MonoBehaviour
                     {
                         footstepSource.clip = sound.audioClip;
                         footstepSource.Play();
-                        footstepSource.volume = 0.1f;  
+                        footstepSource.volume = 0.02f;  
                     }
                     else
                     {
@@ -62,7 +62,7 @@ public class Footsteps : MonoBehaviour
                             {
                                 footstepSource.clip = sound.audioClip;
                                 footstepSource.Play();
-                                footstepSource.volume = 0.1f;
+                                footstepSource.volume = 0.02f;
                                 hasPlayed = true;
                             }
                         }

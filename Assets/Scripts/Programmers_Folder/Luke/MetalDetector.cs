@@ -27,17 +27,14 @@ public class MetalDetector : MonoBehaviour
 
     private float currentShortestDistance = float.MaxValue;
     private float previousShortestDistance = 0;
-    private AudioSource audioPlayer;
+    [SerializeField] private AudioSource audioPlayer;
 
     public float GetDistance()
     {
         return previousShortestDistance;
     }
 
-    private void Awake()
-    {
-        audioPlayer = gameObject.AddComponent<AudioSource>();
-    }
+
 
     private void Update()
     {

@@ -17,12 +17,8 @@ public class Subtitles : MonoBehaviour
 
     private float timeLeft = 0;
     private Text text;
-    private AudioSource voiceSource;
+    [SerializeField] private AudioSource voiceSource;
 
-    private void Awake()
-    {
-        voiceSource = gameObject.GetComponent<AudioSource>();
-    }
 
     private void Start()
     {

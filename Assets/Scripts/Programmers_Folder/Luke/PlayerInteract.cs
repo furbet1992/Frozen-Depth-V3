@@ -114,7 +114,8 @@ public class PlayerInteract : MonoBehaviour
                 else if (hit.collider.CompareTag("CollectUI"))
                 {
                     collectableUI.SetActive(true);
-                    antidotes.SetActive(true); 
+                    antidotes.SetActive(true);
+                    Destroy(hit.collider.gameObject); 
                 }
             }
         }
