@@ -3,7 +3,7 @@
     Author:    Luke Lazzaro
     Summary: Enables interaction and opens artifact viewer
     Creation Date: 21/07/2020
-    Last Modified: 10/11/2020
+    Last Modified: 01/12/2020
 */
 
 using System;
@@ -21,17 +21,14 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private Text viewerDescription;
     [SerializeField] private GameObject gunObject;
     [SerializeField] private GameObject freezerAttachment;
-    [SerializeField] private AudioClip antidotePickupSound;
+    [Range(0, 1)] [SerializeField] private float startingFuelPercent = 0.5f;
+    //[SerializeField] private AudioClip antidotePickupSound;
     [SerializeField] private MenuManager menuManager;
     [SerializeField] private GameObject fuelBar;
 
     [Header("Tutorials")]
     [SerializeField] private GameObject meltTutorial;
     [SerializeField] private GameObject createTutorial;
-
-    [Header("CollectableUI")]
-    [SerializeField] private GameObject collectableUI;
-    [SerializeField] private GameObject antidotes; 
 
     // Used for enabling and disabling player movement
     private PlayerMovement pmScript;
@@ -40,14 +37,22 @@ public class PlayerInteract : MonoBehaviour
     // Used for enabling tool freezing
     private Tool toolScript;
 
-    private AudioSource antidotePickupSource;
+    [Header("Sounds")]
+    //private AudioSource antidotePickupSource;
+    public AudioSource gunattachments;
+    public AudioSource keySound;
+    public AudioSource antidoteSound;
+
+    public GameObject collectableUI;
+    public GameObject antidotes; 
+
 
     private void Awake()
     {
         pmScript = GetComponent<PlayerMovement>();
         mlScript = playerCamera.gameObject.GetComponent<MouseLook>();
         toolScript = GetComponent<Tool>();
-        antidotePickupSource = gameObject.AddComponent<AudioSource>();
+        //antidotePickupSource = gameObject.AddComponent<AudioSource>();
     }
 
     private void Update()
@@ -79,10 +84,12 @@ public class PlayerInteract : MonoBehaviour
                 {
                     InteractWithArtifact(hit.collider.gameObject);
                     hit.collider.gameObject.SetActive(false);
+                    antidoteSound.Play(); 
                 }
                 else if (key != null)
                 {
                     key.Collect();
+                    keySound.Play(); 
                 }
                 else if (keyhole != null)
                 {
@@ -90,8 +97,8 @@ public class PlayerInteract : MonoBehaviour
                 }
                 else if (antidote != null)
                 {
-                    antidotePickupSource.clip = antidotePickupSound;
-                    antidotePickupSource.Play();
+                    //antidotePickupSource.clip = antidotePickupSound;
+                   // antidotePickupSource.Play();
 
                     antidote.Collect();
                 }
@@ -102,20 +109,22 @@ public class PlayerInteract : MonoBehaviour
                     meltTutorial.SetActive(true);
                     menuManager.playerHasTool = true;
                     hit.collider.gameObject.SetActive(false);
+                    gunattachments.Play(); 
                 }
                 else if (hit.collider.CompareTag("Tool Component"))
                 {
                     toolScript.canFreeze = true;
                     hit.collider.gameObject.SetActive(false);
                     createTutorial.SetActive(true);
-                    freezerAttachment.SetActive(true);
+                    freezerAttachment.SetActive(false);
                     fuelBar.SetActive(true);
+                    toolScript.toolFuel = startingFuelPercent * toolScript.capacity;
+                    gunattachments.Play();
                 }
                 else if (hit.collider.CompareTag("CollectUI"))
                 {
                     collectableUI.SetActive(true);
                     antidotes.SetActive(true);
-                    Destroy(hit.collider.gameObject); 
                 }
             }
         }
