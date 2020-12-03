@@ -116,7 +116,7 @@ public class PlayerInteract : MonoBehaviour
                     toolScript.canFreeze = true;
                     hit.collider.gameObject.SetActive(false);
                     createTutorial.SetActive(true);
-                    freezerAttachment.SetActive(false);
+                    freezerAttachment.SetActive(true);
                     fuelBar.SetActive(true);
                     toolScript.toolFuel = startingFuelPercent * toolScript.capacity;
                     gunattachments.Play();
@@ -125,6 +125,8 @@ public class PlayerInteract : MonoBehaviour
                 {
                     collectableUI.SetActive(true);
                     antidotes.SetActive(true);
+                    gunattachments.Play();
+                    Destroy(hit.collider.gameObject); 
                 }
             }
         }

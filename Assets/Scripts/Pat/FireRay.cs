@@ -17,8 +17,10 @@ public class FireRay : MonoBehaviour
     public AudioSource largeRockSlide;
     public AudioSource gateOpening;
     public AudioSource hydraulicSound;
+    public AudioSource antidoteSound; 
 
-   
+
+
     public GameObject fallingStones;
     public GameObject fallingStones2;
 
@@ -62,8 +64,9 @@ public class FireRay : MonoBehaviour
             {
                 if (rayhit.collider.gameObject.name == "Antidote (3)")
                 {
-                    Debug.Log("got it"); 
+                    Debug.Log("got it");
                     //delete that artifact
+                    antidoteSound.Play(); 
                     Destroy(rayhit.collider.gameObject);
 
                     //play sound of earthquake
