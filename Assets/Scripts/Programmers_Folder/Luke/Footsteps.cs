@@ -50,7 +50,6 @@ public class Footsteps : MonoBehaviour
                     {
                         footstepSource.clip = sound.audioClip;
                         footstepSource.Play();
-                        footstepSource.volume = 0.02f;  
                     }
                     else
                     {
@@ -62,7 +61,6 @@ public class Footsteps : MonoBehaviour
                             {
                                 footstepSource.clip = sound.audioClip;
                                 footstepSource.Play();
-                                footstepSource.volume = 0.02f;
                                 hasPlayed = true;
                             }
                         }

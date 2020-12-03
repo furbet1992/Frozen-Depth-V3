@@ -30,12 +30,7 @@ public class Keyhole : MonoBehaviour
 
     private Vector3 originalPos;
     private bool isRising = false;
-    private AudioSource keyholeSource;
-
-    private void Awake()
-    {
-        keyholeSource = gameObject.AddComponent<AudioSource>();
-    }
+    [SerializeField] private AudioSource keyholeSource;
 
     private void Start()
     {
